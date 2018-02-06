@@ -1,5 +1,5 @@
 <?php
-$title = 'Welcome';
+$title = 'Localhost | Directory of working sites';
 ?>
 
 <!DOCTYPE html>
@@ -19,16 +19,18 @@ $title = 'Welcome';
 			background-color: #ddd;
 		}
 		.btn.sort:after {
-			content: " ";
+			display: inline-block;
+			margin-left: 1em;
+			position: relative;
 		}
 		.btn.sort.asc:after {
-			content: "up";
+			content: "▼";
 		}
-		.btn.sort.desc {
-			content: "up";
+		.btn.sort.desc:after {
+			content: "▲";
 		}
 		.jumbotron h1 {
-			text-transform: capitalize;
+			font-size: 2.5rem;
 		}
 		.wrapper {
 			background-color: #fff;
@@ -56,8 +58,11 @@ $title = 'Welcome';
 			<main role="main">
 				<div class="jumbotron">
 					<div class="col-sm-8 mx-auto">
-						<h1><?php echo $_SERVER['SERVER_NAME']; ?></h1>
-					</div>
+						<h1>Localhost</h1>
+<!-- 						<h3>Latest Drupal 8 version: <strong id="latestD8"></strong></h3>
+						<h3>Latest Drupal 7 version: <strong id="latestD7"></strong></h3>
+						<h3>Latest WordPress version: <strong id="latestWP"></strong></h3>
+ -->					</div>
 				</div>
 
 				<!-- Lists all projects in www directory -->
@@ -126,7 +131,7 @@ $title = 'Welcome';
 </footer>
 
 	<!-- SCRIPTS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
@@ -136,7 +141,6 @@ $title = 'Welcome';
 		};
 
 		var hackerList = new List('localhost-list', options);
-		localhost-list
 	</script>
 </body>
 </html>
