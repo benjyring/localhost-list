@@ -1,5 +1,5 @@
 <?php
-$title = 'Localhost | Directory of working sites';
+$title = 'Localhost';
 ?>
 
 <!DOCTYPE html>
@@ -8,44 +8,8 @@ $title = 'Localhost | Directory of working sites';
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="localhost-list/app.css" />
 	<title><?php echo $title; ?></title>
-
-	<style>
-		#accordion {
-			margin-top: 60px;
-		}
-		.btn.sort.asc,
-		.btn.sort.desc {
-			background-color: #ddd;
-		}
-		.btn.sort:after {
-			display: inline-block;
-			margin-left: 1em;
-			position: relative;
-		}
-		.btn.sort.asc:after {
-			content: "▼";
-		}
-		.btn.sort.desc:after {
-			content: "▲";
-		}
-		.jumbotron h1 {
-			font-size: 2.5rem;
-		}
-		.wrapper {
-			background-color: #fff;
-			margin-bottom: 100vh;
-			padding-bottom: 30px;
-			z-index: 1031;
-		}
-		footer {
-			background: #e9ecef;
-			z-index: 1;
-		}
-		footer .container {
-			height: 100vh;
-		}
-	</style>
 </head>
 
 <body>
@@ -95,7 +59,7 @@ $title = 'Localhost | Directory of working sites';
 							?>
 							<li class="list-group-item">
 								<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
-								<h6 class="modified"><?php echo filemtime($folder); ?></h6>
+								<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
 							</li>
 							<?php
 						}
