@@ -57,7 +57,31 @@ $title = 'Localhost';
 							<?php
 						} else if (is_dir($folder)) {
 							?>
-							<li class="list-group-item">
+							<li class="list-group-item" style="background-image: url();">
+
+
+								<?php
+									function rsearch($folder, $pattern_array) {
+										$return = array();
+										$iti = new RecursiveDirectoryIterator($folder);
+										foreach(new RecursiveIteratorIterator($iti) as $file){
+											if (in_array(strtolower(array_pop(explode('.', $file))), $pattern_array)){
+												$return[] = $file;
+											}
+										}
+										return $return;
+									}
+
+									$directo = './' . $folder;
+									$filepaths = rsearch( $directo, array('jpeg', 'jpg') );
+
+									foreach($filepaths as $file){
+										echo $file . ' - ' .  filesize($file) . "\r\n";
+										// if (filesize($file) < )
+									}
+								?>
+
+
 								<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
 								<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
 							</li>
