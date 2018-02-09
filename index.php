@@ -57,28 +57,28 @@ $title = 'Localhost';
 							<?php
 						} else if (is_dir($folder)) {
 							?>
-							<li class="list-group-item" style="background-image: url();">
+							<li class="list-group-item">
 
 
 								<?php
-									function rsearch($folder, $pattern_array) {
-										$return = array();
-										$iti = new RecursiveDirectoryIterator($folder);
-										foreach(new RecursiveIteratorIterator($iti) as $file){
-											if (in_array(strtolower(array_pop(explode('.', $file))), $pattern_array)){
-												$return[] = $file;
-											}
-										}
-										return $return;
-									}
+									// function rsearch($folder, $pattern_array) {
+									// 	$return = array();
+									// 	$iti = new RecursiveDirectoryIterator($folder);
+									// 	foreach(new RecursiveIteratorIterator($iti) as $file){
+									// 		if (in_array(strtolower(array_pop(explode('.', $file))), $pattern_array)){
+									// 			$return[] = $file;
+									// 		}
+									// 	}
+									// 	return $return;
+									// }
 
-									$directo = './' . $folder;
-									$filepaths = rsearch( $directo, array('jpeg', 'jpg') );
+									// $directo = './' . $folder;
+									// $filepaths = rsearch( $directo, array('jpeg', 'jpg') );
 
-									foreach($filepaths as $file){
-										echo $file . ' - ' .  filesize($file) . "\r\n";
-										// if (filesize($file) < )
-									}
+									// foreach($filepaths as $file){
+									// 	echo $file . ' - ' .  filesize($file) . "\r\n";
+									// 	// if (filesize($file) < )
+									// }
 								?>
 
 
@@ -113,10 +113,10 @@ $title = 'Localhost';
 	</div>
 
 	<footer class="footer fixed-bottom">
-	<div class="container d-flex align-items-center">
-		<?php echo date("Y"); ?> © Ben Jyring
-	</div>
-</footer>
+		<div class="container d-flex align-items-center">
+			<?php echo date("Y"); ?> © Ben Jyring
+		</div>
+	</footer>
 
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
