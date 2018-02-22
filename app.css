@@ -1,5 +1,5 @@
 #accordion {
-	margin-top: 60px;
+	margin: 30px 0 60px;
 }
 .btn.sort.asc,
 .btn.sort.desc {
@@ -16,14 +16,55 @@
 .btn.sort.desc:after {
 	content: "▲";
 }
+
+/*CMS Indicator Icons*/
+.cms:before {
+	background-size: cover;
+	content: '';
+	display: inline-block;
+	margin: 0 15px;
+	height: 1em;
+	width: 1em;
+}
+.cms.tao:before {
+	background-image: url(img/tao.png);
+}
+.cms.wp:before {
+	background-image: url(img/wp.png);
+}
+.cms.d7:before,
+.cms.d8:before {
+	background-image: url(img/drupal.png);
+}
+
+.jumbotron {
+	background: #fff;
+	border: 1px solid rgba(0,0,0,.125);
+}
+#accordion,
+.jumbotron,
+.input-group.mb-3,
+.list.list-group,
+#phpmyadmin {
+	border-radius: .25rem !important;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+}
 .jumbotron h1 {
 	font-size: 2.5rem;
 }
+
 .modified {
 	color: #ced4da;
 }
+#phpmyadmin {
+	background-color: #f7f7f7;
+	padding: 20px 30px;
+}
+#phpmyadmin a {
+	background-color: transparent;
+}
 .wrapper {
-	background-color: #fff;
+	background-color: #e9ecef;
 	margin-bottom: 100vh;
 	padding-bottom: 30px;
 	padding-top: 60px;
@@ -34,5 +75,6 @@ footer {
 	z-index: 1019 !important;
 }
 footer .container {
+	color: #fff;
 	height: 100vh;
 }

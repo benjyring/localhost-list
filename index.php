@@ -29,6 +29,26 @@ $title = 'Localhost';
  -->					</div>
 				</div>
 
+				<div id="phpmyadmin">
+					<a href="/phpmyadmin">phpMyAdmin</a>
+				</div>
+				<!-- PHP Info -->
+				<div id="accordion">
+					<div class="card">
+						<div class="card-header" id="headingOne">
+							<h5 class="mb-0">
+								<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">PHP Info</button>
+							</h5>
+						</div>
+
+						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+							<div class="card-body">
+								<?php echo "<pre>" . phpinfo() . "</pre>"; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- Lists all projects in www directory -->
 				<h2>Projects</h2>
 				<div id="localhost-list">
@@ -56,33 +76,28 @@ $title = 'Localhost';
 							<li><span class="label label-info">Symfony</span> <a href="./<?php echo $folder . '/web/app_dev.php'; ?>"><?php echo $folder; ?></a></li>
 							<?php
 						} else if (is_dir($folder)) {
+
+								if (file_exists($folder . '/theme.json')){
+									$CMS = "tao";
+									$CMS_name = "TaoCMS";
+								} else if (file_exists($folder . '/wp-config.php')){
+									$CMS = "wp";
+									$CMS_name = "Wordpress";
+								} else if (file_exists($folder . '/.eslintrc.json')){
+									$CMS = "d8";
+									$CMS_name = "Drupal 8";
+								} else if (file_exists($folder . '/INSTALL.pgsql.txt')){
+									$CMS = "d7";
+									$CMS_name = "Drupal 7";
+								} else {
+									$CMS = "none";
+									$CMS_name = "No CMS detected";
+								}
 							?>
+
 							<li class="list-group-item">
-
-
-								<?php
-									// function rsearch($folder, $pattern_array) {
-									// 	$return = array();
-									// 	$iti = new RecursiveDirectoryIterator($folder);
-									// 	foreach(new RecursiveIteratorIterator($iti) as $file){
-									// 		if (in_array(strtolower(array_pop(explode('.', $file))), $pattern_array)){
-									// 			$return[] = $file;
-									// 		}
-									// 	}
-									// 	return $return;
-									// }
-
-									// $directo = './' . $folder;
-									// $filepaths = rsearch( $directo, array('jpeg', 'jpg') );
-
-									// foreach($filepaths as $file){
-									// 	echo $file . ' - ' .  filesize($file) . "\r\n";
-									// 	// if (filesize($file) < )
-									// }
-								?>
-
-
 								<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
+								<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
 								<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
 							</li>
 							<?php
@@ -92,27 +107,11 @@ $title = 'Localhost';
 					</ul>
 				</div>
 
-				<!-- PHP Info -->
-				<div id="accordion">
-					<div class="card">
-						<div class="card-header" id="headingOne">
-							<h5 class="mb-0">
-								<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">PHP Info</button>
-							</h5>
-						</div>
-
-						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-							<div class="card-body">
-								<?php echo "<pre>" . phpinfo() . "</pre>"; ?>
-							</div>
-						</div>
-					</div>
-				</div>
 			</main>
 		</div>
 	</div>
 
-	<footer class="footer fixed-bottom">
+	<footer class="footer fixed-bottom bg-dark">
 		<div class="container d-flex align-items-center">
 			<?php echo date("Y"); ?> © Ben Jyring
 		</div>
