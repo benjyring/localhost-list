@@ -17,17 +17,59 @@
 	content: "▲";
 }
 
+/*Localhost List UI Improvements*/
+#localhost-list li:hover .cms:before {
+	opacity: 1;
+}
+#localhost-list li:hover .cms,
+#localhost-list li:hover .modified {
+	color: #ababab;
+}
+.sort-by {
+	clear: both;
+	display: block;
+	float: right;
+	padding: 0 8px;
+	text-align: right;
+	width: 100%;
+}
+.sort-group {
+	margin-bottom: 15px;
+}
+
 /*CMS Indicator Icons*/
+.cms,
+.sort-by label {
+	color: #ced4da;
+	cursor: pointer;
+	font-size: .75em;
+	transition: color .1s ease;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
 .cms:before {
 	background-size: cover;
 	content: '';
 	display: inline-block;
 	margin: 0 15px;
-	height: 1em;
-	width: 1em;
+	opacity: .9;
+	height: 30px;
+	width: 30px;
+	vertical-align: middle;
+	transition: opacity .1s ease;
+}
+.cms.none:before {
+	background-image: url(img/none.png);
+}
+.cms.todaymade:before {
+	background-image: url(img/todaymade.png);
 }
 .cms.tao:before {
 	background-image: url(img/tao.png);
+}
+.cms.joomla:before {
+	background-image: url(img/joomla.png);
 }
 .cms.wp:before {
 	background-image: url(img/wp.png);
@@ -44,10 +86,9 @@
 #accordion,
 .jumbotron,
 .input-group.mb-3,
-.list.list-group,
-#phpmyadmin {
+.list.list-group {
 	border-radius: .25rem !important;
-	box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 .jumbotron h1 {
 	font-size: 2.5rem;
@@ -55,13 +96,7 @@
 
 .modified {
 	color: #ced4da;
-}
-#phpmyadmin {
-	background-color: #f7f7f7;
-	padding: 20px 30px;
-}
-#phpmyadmin a {
-	background-color: transparent;
+	transition: color .1s ease;
 }
 .wrapper {
 	background-color: #e9ecef;

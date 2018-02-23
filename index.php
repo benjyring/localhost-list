@@ -21,17 +21,15 @@ $title = 'Localhost';
 		<div class="container">
 			<main role="main">
 				<div class="jumbotron">
-					<div class="col-sm-8 mx-auto">
-						<h1>Localhost</h1>
-<!-- 						<h3>Latest Drupal 8 version: <strong id="latestD8"></strong></h3>
-						<h3>Latest Drupal 7 version: <strong id="latestD7"></strong></h3>
-						<h3>Latest WordPress version: <strong id="latestWP"></strong></h3>
- -->					</div>
+					<div class="col-sm-10 mx-auto">
+						<h1 class="display-1">Localhost</h1>
+							<hr class="my-4">
+							<p class="lead">
+								<a class="btn btn-primary btn-lg" href="/phpmyadmin" role="button">phpMyAdmin</a>
+							</p>
+					</div>
 				</div>
 
-				<div id="phpmyadmin">
-					<a href="/phpmyadmin">phpMyAdmin</a>
-				</div>
 				<!-- PHP Info -->
 				<div id="accordion">
 					<div class="card">
@@ -52,15 +50,51 @@ $title = 'Localhost';
 				<!-- Lists all projects in www directory -->
 				<h2>Projects</h2>
 				<div id="localhost-list">
-					<div class="input-group mb-3">
-						<input class="form-control search" placeholder="Search" />
-						<div class="input-group-append">
-							<span class="btn input-group-text sort" data-sort="name">Sort by name</span>
+					<div class="row">
+						<div class="col-sm-10">
+							<div class="input-group mb-3">
+								<input class="form-control search" placeholder="Search" />
+								<div class="input-group-append">
+									<span class="btn input-group-text sort" data-sort="name">Sort by name</span>
+								</div>
+								<div class="input-group-append">
+									<span class="btn input-group-text sort" data-sort="modified">Sort by modified</span>
+								</div>
+							</div>
 						</div>
-						<div class="input-group-append">
-							<span class="btn input-group-text sort" data-sort="modified">Sort by modified</span>
+
+						<div class="col-sm-2">
+							<div class="input-group sort-group">
+								<div class="form-control">
+									<div class="sort-by">
+										<label for="d8">Drupal 8</label>
+										<input type="checkbox" name="checkbox" id="d8" value="d8">
+									</div>
+									<div class="sort-by">
+										<label for="d7">Drupal 7</label>
+										<input type="checkbox" name="checkbox" id="d7" value="d7">
+									</div>
+									<div class="sort-by">
+										<label for="wp">Wordpress</label>
+										<input type="checkbox" name="checkbox" id="wp" value="wp">
+									</div>
+									<div class="sort-by">
+										<label for="tao">taoCMS</label>
+										<input type="checkbox" name="checkbox" id="tao" value="tao">
+									</div>
+									<div class="sort-by">
+										<label for="todaymade">TodayMade</label>
+										<input type="checkbox" name="checkbox" id="todaymade" value="todaymade">
+									</div>
+									<div class="sort-by">
+										<label for="joomla">Joomla</label>
+										<input type="checkbox" name="checkbox" id="joomla" value="joomla">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+
 					<ul class="list list-group">
 					<?php
 					$folders = glob('./*', GLOB_ONLYDIR);
@@ -89,6 +123,12 @@ $title = 'Localhost';
 								} else if (file_exists($folder . '/INSTALL.pgsql.txt')){
 									$CMS = "d7";
 									$CMS_name = "Drupal 7";
+								} else if (file_exists($folder . '/robots.txt.dist')){
+									$CMS = "joomla";
+									$CMS_name = "Joomla";
+								} else if (file_exists($folder . '/connector.php')){
+									$CMS = "todaymade";
+									$CMS_name = "TodayMade";
 								} else {
 									$CMS = "none";
 									$CMS_name = "No CMS detected";
@@ -96,9 +136,17 @@ $title = 'Localhost';
 							?>
 
 							<li class="list-group-item">
-								<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
-								<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
-								<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
+								<div class="row">
+									<div class="col-sm-3">
+										<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
+									</div>
+									<div class="col-sm-3">
+										<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
+									</div>
+									<div class="col-sm-6">
+										<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
+									</div>
+								</div>
 							</li>
 							<?php
 						}
@@ -128,6 +176,19 @@ $title = 'Localhost';
 		};
 
 		var hackerList = new List('localhost-list', options);
+	</script>
+	<script>
+		var lgi = $('.list-group-item');
+		$(".sort-by input:checkbox").on('change', function() {
+			if ($(".sort-by input:checkbox:checked").length){
+				lgi.hide();
+			} else {
+				lgi.show();
+			}
+			$(".sort-by input:checkbox:checked").each(function() {
+				$("." + $(this).val()).parents(lgi).show();
+			});
+		});
 	</script>
 </body>
 </html>
