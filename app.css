@@ -78,6 +78,15 @@
 .cms.d8:before {
 	background-image: url(img/drupal.png);
 }
+.cms.magento:before {
+	background-image: url(img/magento.png);
+}
+.cms.prestashop:before {
+	background-image: url(img/prestashop.png);
+}
+.cms.typo3:before {
+	background-image: url(img/typo3.png);
+}
 
 .jumbotron {
 	background: #fff;

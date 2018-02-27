@@ -61,6 +61,74 @@ $title = 'Localhost';
 									<span class="btn input-group-text sort" data-sort="modified">Sort by modified</span>
 								</div>
 							</div>
+
+							<ul class="list list-group">
+							<?php
+							$folders = glob('./*', GLOB_ONLYDIR);
+							foreach ($folders as $f){
+								$tmp[basename($f)] = filemtime($f);
+							}
+							arsort($tmp);
+							$folders = array_keys($tmp);
+							foreach ($folders as $folder) {
+								if ($folder === '.' or $folder === '..') continue;
+								if (is_dir($folder) && file_exists('./' . $folder . '/web/app_dev.php')) {
+									?>
+									<li><span class="label label-info">Symfony</span> <a href="./<?php echo $folder . '/web/app_dev.php'; ?>"><?php echo $folder; ?></a></li>
+									<?php
+								} else if (is_dir($folder)) {
+
+										if (file_exists($folder . '/theme.json')){
+											$CMS = "tao";
+											$CMS_name = "TaoCMS";
+										} else if (file_exists($folder . '/wp-config.php')){
+											$CMS = "wp";
+											$CMS_name = "Wordpress";
+										} else if (file_exists($folder . '/drush')){
+											$CMS = "d8";
+											$CMS_name = "Drupal 8";
+										} else if (file_exists($folder . '/INSTALL.pgsql.txt')){
+											$CMS = "d7";
+											$CMS_name = "Drupal 7";
+										} else if (file_exists($folder . '/robots.txt.dist')){
+											$CMS = "joomla";
+											$CMS_name = "Joomla";
+										} else if (file_exists($folder . '/connector.php')){
+											$CMS = "todaymade";
+											$CMS_name = "TodayMade";
+										} else if (file_exists($folder . '/typo3')){
+											$CMS = "typo3";
+											$CMS_name = "Typo3";
+										} else if (file_exists($folder . '/app/i18n/Magento')){
+											$CMS = "magento";
+											$CMS_name = "Magento";
+										} else if (file_exists($folder . '/src/PrestaShopBundle')){
+											$CMS = "prestashop";
+											$CMS_name = "PrestaShop";
+										} else {
+											$CMS = "none";
+											$CMS_name = "No CMS detected";
+										}
+									?>
+
+									<li class="list-group-item">
+										<div class="row">
+											<div class="col-sm-3">
+												<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
+											</div>
+											<div class="col-sm-3">
+												<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
+											</div>
+											<div class="col-sm-6">
+												<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
+											</div>
+										</div>
+									</li>
+									<?php
+								}
+							}
+							?>
+							</ul>
 						</div>
 
 						<div class="col-sm-2">
@@ -90,71 +158,24 @@ $title = 'Localhost';
 										<label for="joomla">Joomla</label>
 										<input type="checkbox" name="checkbox" id="joomla" value="joomla">
 									</div>
+									<div class="sort-by">
+										<label for="typo3">Typo3</label>
+										<input type="checkbox" name="checkbox" id="typo3" value="typo3">
+									</div>
+									<div class="sort-by">
+										<label for="magento">Magento</label>
+										<input type="checkbox" name="checkbox" id="magento" value="magento">
+									</div>
+									<div class="sort-by">
+										<label for="prestashop">PrestaShop</label>
+										<input type="checkbox" name="checkbox" id="prestashop" value="prestashop">
+									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
-
-					<ul class="list list-group">
-					<?php
-					$folders = glob('./*', GLOB_ONLYDIR);
-					foreach ($folders as $f){
-						$tmp[basename($f)] = filemtime($f);
-					}
-					arsort($tmp);
-					$folders = array_keys($tmp);
-					foreach ($folders as $folder) {
-						if ($folder === '.' or $folder === '..') continue;
-						if (is_dir($folder) && file_exists('./' . $folder . '/web/app_dev.php')) {
-							?>
-							<li><span class="label label-info">Symfony</span> <a href="./<?php echo $folder . '/web/app_dev.php'; ?>"><?php echo $folder; ?></a></li>
-							<?php
-						} else if (is_dir($folder)) {
-
-								if (file_exists($folder . '/theme.json')){
-									$CMS = "tao";
-									$CMS_name = "TaoCMS";
-								} else if (file_exists($folder . '/wp-config.php')){
-									$CMS = "wp";
-									$CMS_name = "Wordpress";
-								} else if (file_exists($folder . '/.eslintrc.json')){
-									$CMS = "d8";
-									$CMS_name = "Drupal 8";
-								} else if (file_exists($folder . '/INSTALL.pgsql.txt')){
-									$CMS = "d7";
-									$CMS_name = "Drupal 7";
-								} else if (file_exists($folder . '/robots.txt.dist')){
-									$CMS = "joomla";
-									$CMS_name = "Joomla";
-								} else if (file_exists($folder . '/connector.php')){
-									$CMS = "todaymade";
-									$CMS_name = "TodayMade";
-								} else {
-									$CMS = "none";
-									$CMS_name = "No CMS detected";
-								}
-							?>
-
-							<li class="list-group-item">
-								<div class="row">
-									<div class="col-sm-3">
-										<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
-									</div>
-									<div class="col-sm-3">
-										<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
-									</div>
-									<div class="col-sm-6">
-										<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
-									</div>
-								</div>
-							</li>
-							<?php
-						}
-					}
-					?>
-					</ul>
 				</div>
-
 			</main>
 		</div>
 	</div>
