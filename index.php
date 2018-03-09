@@ -8,6 +8,7 @@ $title = 'Localhost';
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="localhost-list/app.css" />
 	<title><?php echo $title; ?></title>
 </head>
@@ -109,6 +110,10 @@ $title = 'Localhost';
 											$CMS = "none";
 											$CMS_name = "No CMS detected";
 										}
+
+										if (file_exists($folder . '/.git')){
+											$repo = "git";
+										}
 									?>
 
 									<li class="list-group-item">
@@ -118,6 +123,7 @@ $title = 'Localhost';
 											</div>
 											<div class="col-sm-3">
 												<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
+												<span class="repo <?php echo $repo; ?>"><?php echo $repo; ?></span>
 											</div>
 											<div class="col-sm-6">
 												<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
@@ -182,7 +188,35 @@ $title = 'Localhost';
 
 	<footer class="footer fixed-bottom bg-dark">
 		<div class="container d-flex align-items-center">
-			<?php echo date("Y"); ?> © Ben Jyring
+			<div class="misc">
+				<div class="misc-author">
+					<img src="http://1.gravatar.com/avatar/5b1a645cfd15dec47f22877a112acbde?size=80" id="ben-pic" class="rounded misc-author-pic">
+					<h4>Hi! I'm Ben Jyring, the author of localhost-list.</h4>
+					<p>I hope you like this using this tool. I’ve put a lot of hours into it! Feel free to follow me on LinkedIn and GitHub for updates!</p>
+
+					<div class="follow-button github">
+						<a href="https://github.com/benjyring/">
+							<span id="icon-bg"><i class="fa fa-github"></i></span>
+							<span id="icon-label-bg">Follow Ben Jyring</span>
+						</a>
+					</div>
+
+					<div class="follow-button linkedin">
+						<a href="https://www.linkedin.com/pub/ben-jyring/85/27a/b20?trk=pub-pbmap">
+							<span id="icon-bg"><i class="fa fa-linkedin"></i></span>
+							<span id="icon-label-bg">Follow Ben Jyring</span>
+						</a>
+					</div>
+
+					<!-- <div class="follow-button donate">
+						<a href="#">
+							<span id="icon-bg"><i class="fa fa-coffee"></i></span>
+							<span id="icon-label-bg">Donate a cup of coffee</span>
+						</a>
+					</div> -->
+					<div class="copyright"><?php echo date("Y"); ?> © Ben Jyring</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 
