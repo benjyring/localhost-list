@@ -77,38 +77,27 @@ $title = 'Localhost';
 									?>
 									<li><span class="label label-info">Symfony</span> <a href="./<?php echo $folder . '/web/app_dev.php'; ?>"><?php echo $folder; ?></a></li>
 									<?php
-								} else if (is_dir($folder)) {
+								} else if (is_dir($folder)){
 
-										if (file_exists($folder . '/theme.json')){
-											$CMS = "tao";
-											$CMS_name = "TaoCMS";
-										} else if (file_exists($folder . '/wp-config.php')){
-											$CMS = "wp";
-											$CMS_name = "Wordpress";
-										} else if (file_exists($folder . '/drush')){
-											$CMS = "d8";
-											$CMS_name = "Drupal 8";
-										} else if (file_exists($folder . '/INSTALL.pgsql.txt')){
-											$CMS = "d7";
-											$CMS_name = "Drupal 7";
-										} else if (file_exists($folder . '/robots.txt.dist')){
-											$CMS = "joomla";
-											$CMS_name = "Joomla";
-										} else if (file_exists($folder . '/connector.php')){
-											$CMS = "todaymade";
-											$CMS_name = "TodayMade";
-										} else if (file_exists($folder . '/typo3')){
-											$CMS = "typo3";
-											$CMS_name = "Typo3";
-										} else if (file_exists($folder . '/app/i18n/Magento')){
-											$CMS = "magento";
-											$CMS_name = "Magento";
-										} else if (file_exists($folder . '/src/PrestaShopBundle')){
-											$CMS = "prestashop";
-											$CMS_name = "PrestaShop";
-										} else {
-											$CMS = "none";
-											$CMS_name = "No CMS detected";
+										$file_checks = array(
+										'/theme.json' => 'tao',
+										'/wp-config.php' => 'wp',
+										'/drush' => 'd8',
+										'/INSTALL.pgsql.txt' => 'd7',
+										'/robots.txt.dist' => 'joomla',
+										'/connector.php' => 'todaymade',
+										'/typo3' => 'typo3',
+										'/app/i18n/Magento' => 'magento',
+										'/src/PrestaShopBundle' => 'prestashop'
+										);
+
+										foreach ($file_checks as $key => $val){
+											if (file_exists($folder . $key)){
+												$CMS = $val;
+												break;
+											} else {
+												$CMS = none;
+											}
 										}
 
 										if (file_exists($folder . '/.git')){
@@ -123,7 +112,7 @@ $title = 'Localhost';
 											</div>
 											<div class="col-sm-3">
 												<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
-												<span class="repo <?php echo $repo; ?>"><?php echo $repo; ?></span>
+												<!-- <span class="repo <?php //echo $repo; ?>"><?php //echo $repo; ?></span> -->
 											</div>
 											<div class="col-sm-6">
 												<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
@@ -190,14 +179,14 @@ $title = 'Localhost';
 		<div class="container d-flex align-items-center">
 			<div class="misc">
 				<div class="misc-author">
-					<img src="http://1.gravatar.com/avatar/5b1a645cfd15dec47f22877a112acbde?size=80" id="ben-pic" class="rounded misc-author-pic">
-					<h4>Hi! I'm Ben Jyring, the author of localhost-list.</h4>
-					<p>I hope you like this using this tool. I’ve put a lot of hours into it! Feel free to follow me on LinkedIn and GitHub for updates!</p>
+					<img src="http://1.gravatar.com/avatar/5b1a645cfd15dec47f22877a112acbde?size=80" id="ben-pic" class="rounded pull-left mr-4 mb-3">
+					<h4>Hi! I'm Ben Jyring, the author of <a href="https://github.com/benjyring/localhost-list">localhost-list.</a></h4>
+					<p>I hope you like this using this tool. I’ve put a lot of hours into it! Feel free to follow me on LinkedIn and GitHub for updates, and if you like my work, please consider donating to support future development of open-source tools!</p>
 
-					<div class="follow-button github">
+					<div class="follow-button github mr-2">
 						<a href="https://github.com/benjyring/">
 							<span id="icon-bg"><i class="fa fa-github"></i></span>
-							<span id="icon-label-bg">Follow Ben Jyring</span>
+							<span id="icon-label-bg">Follow @benjyring</span>
 						</a>
 					</div>
 
@@ -208,13 +197,6 @@ $title = 'Localhost';
 						</a>
 					</div>
 
-					<!-- <div class="follow-button donate">
-						<a href="#">
-							<span id="icon-bg"><i class="fa fa-coffee"></i></span>
-							<span id="icon-label-bg">Donate a cup of coffee</span>
-						</a>
-					</div> -->
-					<div class="copyright"><?php echo date("Y"); ?> © Ben Jyring</div>
 				</div>
 			</div>
 		</div>

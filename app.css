@@ -1,3 +1,17 @@
+a {
+	text-decoration: none !important;
+	cursor: pointer;
+}
+h4 a,
+nav a {
+	background: none !important;
+	color: #6cb3ff !important;
+}
+h4 a:hover,
+nav a:hover {
+	color: #007bff !important;
+}
+
 #accordion {
 	margin: 30px 0 60px;
 }
@@ -88,6 +102,40 @@
 	background-image: url(img/typo3.png);
 }
 
+.cms:after {
+	vertical-align: middle;
+}
+.cms.none:after {
+	content: "No CMS detected";
+}
+.cms.todaymade:after {
+	content: "TodayMade";
+}
+.cms.tao:after {
+	content: "TaoCMS";
+}
+.cms.joomla:after {
+	content: "Joomla";
+}
+.cms.wp:after {
+	content: "Wordpress";
+}
+.cms.d7:after {
+	content: "Drupal 7";
+}
+.cms.d8:after {
+	content: "Drupal 8";
+}
+.cms.magento:after {
+	content: "Magento";
+}
+.cms.prestashop:after {
+	content: "PrestaShop";
+}
+.cms.typo3:after {
+	content: "Typo3";
+}
+
 /*Repo Indicator Icons*/
 .repo {
 	color: #ced4da;
@@ -151,10 +199,8 @@ footer .container {
 /* Follow me section */
 form.donate-form,
 .follow-button {
-	display: inline;
+	display: inline-block;
 }
-
-/*fa-github fa-coffee*/
 
 .donate-form button,
 .follow-button a {
@@ -182,7 +228,9 @@ form.donate-form,
 
 #icon-bg {
 	display: inline-block;
-	background: #666; 
+	background: #666;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
 	color: #fff;
 	padding: 0px 5px 3px;
 	font-size: 16px;
