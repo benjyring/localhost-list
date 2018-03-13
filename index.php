@@ -197,6 +197,13 @@ $title = 'Localhost';
 						</a>
 					</div>
 
+					<div class="follow-button donate">
+						<a href="https://benjaminjyring.com/stripe.html">
+							<span id="icon-bg"><i class="fa fa-credit-card"></i></span>
+							<span id="icon-label-bg">Donate $10</span>
+						</a>
+					</div>
+
 				</div>
 			</div>
 		</div>
