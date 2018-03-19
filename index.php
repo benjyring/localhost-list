@@ -1,5 +1,27 @@
 <?php
 $title = 'Localhost';
+$file_checks = array(
+	'/drush' => 'd8',
+	'/INSTALL.pgsql.txt' => 'd7',
+	'/wp-config.php' => 'wp',
+	'/robots.txt.dist' => 'joomla',
+	'/app/i18n/Magento' => 'magento',
+	'/src/PrestaShopBundle' => 'prestashop',
+	'/typo3' => 'typo3',
+	'/theme.json' => 'tao',
+	'/connector.php' => 'todaymade',
+);
+$cms_array = array(
+	'd8' => 'Drupal 8',
+	'd7' => 'Drupal 7',
+	'wp' => 'Wordpress',
+	'joomla' => 'Joomla',
+	'magento' => 'Magento',
+	'prestashop' => 'PrestaShop',
+	'typo3' => 'Typo3',
+	'tao' => 'TaoCMS',
+	'todaymade' => 'TodayMade',
+);
 ?>
 
 <!DOCTYPE html>
@@ -26,25 +48,12 @@ $title = 'Localhost';
 						<h1 class="display-1">Localhost</h1>
 							<hr class="my-4">
 							<p class="lead">
-								<a class="btn btn-primary btn-lg" href="/phpmyadmin" role="button">phpMyAdmin</a>
+								<a href="/phpmyadmin"><button class="btn btn-primary btn-lg">phpMyAdmin</button></a>
+								<button class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#phpinfo" aria-expanded="false" aria-controls="phpinfo">PHP Info</button>
 							</p>
-					</div>
-				</div>
-
-				<!-- PHP Info -->
-				<div id="accordion">
-					<div class="card">
-						<div class="card-header" id="headingOne">
-							<h5 class="mb-0">
-								<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">PHP Info</button>
-							</h5>
-						</div>
-
-						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-							<div class="card-body">
+							<div id="phpinfo" class="collapse">
 								<?php echo "<pre>" . phpinfo() . "</pre>"; ?>
 							</div>
-						</div>
 					</div>
 				</div>
 
@@ -79,18 +88,6 @@ $title = 'Localhost';
 									<?php
 								} else if (is_dir($folder)){
 
-										$file_checks = array(
-										'/theme.json' => 'tao',
-										'/wp-config.php' => 'wp',
-										'/drush' => 'd8',
-										'/INSTALL.pgsql.txt' => 'd7',
-										'/robots.txt.dist' => 'joomla',
-										'/connector.php' => 'todaymade',
-										'/typo3' => 'typo3',
-										'/app/i18n/Magento' => 'magento',
-										'/src/PrestaShopBundle' => 'prestashop'
-										);
-
 										foreach ($file_checks as $key => $val){
 											if (file_exists($folder . $key)){
 												$CMS = $val;
@@ -100,9 +97,9 @@ $title = 'Localhost';
 											}
 										}
 
-										if (file_exists($folder . '/.git')){
-											$repo = "git";
-										}
+										// if (file_exists($folder . '/.git')){
+										// 	$repo = "git";
+										// }
 									?>
 
 									<li class="list-group-item">
@@ -111,11 +108,11 @@ $title = 'Localhost';
 												<a class="name" href="./<?php echo $folder; ?>"><?php echo $folder; ?></a>
 											</div>
 											<div class="col-sm-3">
-												<span class="cms <?php echo $CMS; ?>"><?php echo $CMS_name; ?></span>
+												<span class="cms <?php echo $CMS; ?>"></span>
 												<!-- <span class="repo <?php //echo $repo; ?>"><?php //echo $repo; ?></span> -->
 											</div>
 											<div class="col-sm-6">
-												<h6 class="float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
+												<h6 class="small float-right modified"><?php echo "last updated: " . date('F d, Y, h:i A', filemtime($folder)); ?></h6>
 											</div>
 										</div>
 									</li>
@@ -129,41 +126,19 @@ $title = 'Localhost';
 						<div class="col-sm-2">
 							<div class="input-group sort-group">
 								<div class="form-control">
+
+									<?php foreach ($file_checks as $key => $val) : ?>
+										<div class="sort-by">
+											<label for="<?php echo $val; ?>">
+												<?php echo $cms_array[$val]; ?>
+											</label>
+											<input type="checkbox" name="checkbox" id="<?php echo $val; ?>" value="<?php echo $val; ?>">
+										</div>
+									<?php endforeach; ?>
+
 									<div class="sort-by">
-										<label for="d8">Drupal 8</label>
-										<input type="checkbox" name="checkbox" id="d8" value="d8">
-									</div>
-									<div class="sort-by">
-										<label for="d7">Drupal 7</label>
-										<input type="checkbox" name="checkbox" id="d7" value="d7">
-									</div>
-									<div class="sort-by">
-										<label for="wp">Wordpress</label>
-										<input type="checkbox" name="checkbox" id="wp" value="wp">
-									</div>
-									<div class="sort-by">
-										<label for="tao">taoCMS</label>
-										<input type="checkbox" name="checkbox" id="tao" value="tao">
-									</div>
-									<div class="sort-by">
-										<label for="todaymade">TodayMade</label>
-										<input type="checkbox" name="checkbox" id="todaymade" value="todaymade">
-									</div>
-									<div class="sort-by">
-										<label for="joomla">Joomla</label>
-										<input type="checkbox" name="checkbox" id="joomla" value="joomla">
-									</div>
-									<div class="sort-by">
-										<label for="typo3">Typo3</label>
-										<input type="checkbox" name="checkbox" id="typo3" value="typo3">
-									</div>
-									<div class="sort-by">
-										<label for="magento">Magento</label>
-										<input type="checkbox" name="checkbox" id="magento" value="magento">
-									</div>
-									<div class="sort-by">
-										<label for="prestashop">PrestaShop</label>
-										<input type="checkbox" name="checkbox" id="prestashop" value="prestashop">
+										<label for="none">No CMS</label>
+										<input type="checkbox" name="checkbox" id="none" value="none">
 									</div>
 								</div>
 							</div>
@@ -190,7 +165,7 @@ $title = 'Localhost';
 						</a>
 					</div>
 
-					<div class="follow-button linkedin">
+					<div class="follow-button linkedin mr-2">
 						<a href="https://www.linkedin.com/pub/ben-jyring/85/27a/b20?trk=pub-pbmap">
 							<span id="icon-bg"><i class="fa fa-linkedin"></i></span>
 							<span id="icon-label-bg">Follow Ben Jyring</span>
