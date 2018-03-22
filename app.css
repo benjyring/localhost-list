@@ -149,7 +149,7 @@ nav a:hover {
 .repo:before {
 	background-size: cover;
 	content: '';
-	display: inline-block;
+	display: inline-block;align-items-right
 	margin: 0 15px;
 	opacity: .9;
 	height: 30px;
@@ -159,6 +159,11 @@ nav a:hover {
 }
 .repo.git:before {
 	background-image: url(img/github.png);
+}
+
+/*CMS OPTIONS STYLES*/
+table tr td input {
+	width: 100%;
 }
 
 .jumbotron {

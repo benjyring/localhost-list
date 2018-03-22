@@ -1,27 +1,19 @@
 <?php
 $title = 'Localhost';
-$file_checks = array(
-	'/drush' => 'd8',
-	'/INSTALL.pgsql.txt' => 'd7',
-	'/wp-config.php' => 'wp',
-	'/robots.txt.dist' => 'joomla',
-	'/app/i18n/Magento' => 'magento',
-	'/src/PrestaShopBundle' => 'prestashop',
-	'/typo3' => 'typo3',
-	'/theme.json' => 'tao',
-	'/connector.php' => 'todaymade',
-);
-$cms_array = array(
-	'd8' => 'Drupal 8',
-	'd7' => 'Drupal 7',
-	'wp' => 'Wordpress',
-	'joomla' => 'Joomla',
-	'magento' => 'Magento',
-	'prestashop' => 'PrestaShop',
-	'typo3' => 'Typo3',
-	'tao' => 'TaoCMS',
-	'todaymade' => 'TodayMade',
-);
+include 'localhost-list/cms_array.php';
+// $string = file_get_contents("/localhost-list/cms_array.json");
+// $data = json_decode($string, TRUE);
+// $jsonIterator = new RecursiveIteratorIterator(
+// 	new RecursiveArrayIterator(json_decode($json, TRUE)),
+// 	RecursiveIteratorIterator::SELF_FIRST);
+
+// foreach ($jsonIterator as $key => $val) {
+// 	if(is_array($val)) {
+// 		echo "$key:\n";
+// 	} else {
+// 		echo "$key => $val\n";
+// 	}
+// }
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +30,7 @@ $cms_array = array(
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
 		<a class="brand" href="http://<?php echo $_SERVER['SERVER_ADDR']; ?>"><?php echo $_SERVER['SERVER_ADDR']; ?></a>
+		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#options">Options</button>
 	</nav>
 
 	<div class="wrapper border-bottom position-relative">
@@ -88,9 +81,9 @@ $cms_array = array(
 									<?php
 								} else if (is_dir($folder)){
 
-										foreach ($file_checks as $key => $val){
-											if (file_exists($folder . $key)){
-												$CMS = $val;
+										foreach ($cms_array as $key => $val){
+											if (file_exists($folder . $val['file_path'])){
+												$CMS = $key;
 												break;
 											} else {
 												$CMS = none;
@@ -127,12 +120,12 @@ $cms_array = array(
 							<div class="input-group sort-group">
 								<div class="form-control">
 
-									<?php foreach ($file_checks as $key => $val) : ?>
+									<?php foreach ($cms_array as $key => $val) : ?>
 										<div class="sort-by">
-											<label for="<?php echo $val; ?>">
-												<?php echo $cms_array[$val]; ?>
+											<label for="<?php echo $key; ?>">
+												<?php echo $val['name']; ?>
 											</label>
-											<input type="checkbox" name="checkbox" id="<?php echo $val; ?>" value="<?php echo $val; ?>">
+											<input type="checkbox" name="checkbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>">
 										</div>
 									<?php endforeach; ?>
 
@@ -184,6 +177,58 @@ $cms_array = array(
 		</div>
 	</footer>
 
+	<!-- Modal -->
+	<div class="modal fade" id="options" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title">Options</h2>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<!-- <p>Enter additional CMSs by including a filepath to search for, relative to the root of each.</p> -->
+					<p>This functionality doesn't function yet, but you can see what I'm planning to add. Follow progress at <a href="https://www.github.com/benjyring/localhost-list">localhost-list</a>!</p>
+					<table id="table_add_cms" class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">Class</th>
+								<th scope="col">File Path</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php $index = 1; ?>
+							<?php foreach ($cms_array as $key => $val) : ?>
+							<tr>
+								<th scope="row"><?php echo $index; ?></th>
+								<td><?php echo $val['name']; ?></td>
+								<td><?php echo $key; ?></td>
+								<td><?php echo $val['file_path']; ?></td>
+							</tr>
+							<?php $index++ ?>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
+					<p>
+						<button id="addNewCMS" type="button" class="btn btn-primary">
+							Add New <span class="badge badge-light">+</span>
+						</button>
+					</p>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<a id="save" href="#">
+						<button type="button" class="btn btn-primary">Save CMSs</button>
+					</a>
+				</div>
+				<div class="modal-footer d-flex">
+					<a href="#">How does this work?</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -207,6 +252,47 @@ $cms_array = array(
 			$(".sort-by input:checkbox:checked").each(function() {
 				$("." + $(this).val()).parents(lgi).show();
 			});
+		});
+	</script>
+	<script>
+		function makeNewInputRow(){
+			var previousRowNumber = $('table#table_add_cms tbody tr').length + 1;
+			$('table#table_add_cms tbody').append('<tr><th scope="row">' + previousRowNumber + '</th><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>');
+		}
+		function convertInputs(){
+			$('table#table_add_cms tbody tr td input').each(function(){
+				val = $(this).val();
+				$(this).parent().html(val);
+			});
+		}
+		$("#addNewCMS").click(function(){
+			if( ! $('table#table_add_cms tbody tr td input').length ){
+				makeNewInputRow();
+			} else {
+				// INCOMPLETE
+				convertInputs();
+				makeNewInputRow();
+			}
+		});
+	</script>
+	<script type="text/javascript">
+		$('#save').click(function(){
+			convertInputs();
+			var rows = [];
+			$('table#table_add_cms tbody tr').each(function(i, n){
+				var $row = $(n);
+				rows.push({
+					name: $row.find('td:eq(0)').text(),
+					class: $row.find('td:eq(1)').text(),
+					file_path: $row.find('td:eq(2)').text(),
+				});
+			});
+
+			var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rows));
+			var dlAnchorElem = document.getElementById('save');
+			dlAnchorElem.setAttribute("href", dataStr);
+			dlAnchorElem.setAttribute("download", "cms_array.json");
+			dlAnchorElem.click();
 		});
 	</script>
 </body>
