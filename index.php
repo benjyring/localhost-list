@@ -1,19 +1,9 @@
 <?php
 $title = 'Localhost';
-include 'localhost-list/cms_array.php';
-// $string = file_get_contents("/localhost-list/cms_array.json");
-// $data = json_decode($string, TRUE);
-// $jsonIterator = new RecursiveIteratorIterator(
-// 	new RecursiveArrayIterator(json_decode($json, TRUE)),
-// 	RecursiveIteratorIterator::SELF_FIRST);
-
-// foreach ($jsonIterator as $key => $val) {
-// 	if(is_array($val)) {
-// 		echo "$key:\n";
-// 	} else {
-// 		echo "$key => $val\n";
-// 	}
-// }
+// include 'localhost-list/cms_array.php';
+$string = file_get_contents("localhost-list/cms_array.json");
+$cms_array = json_decode($string, true);
+$CMS_of_all = [];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +19,7 @@ include 'localhost-list/cms_array.php';
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-		<a class="brand" href="http://<?php echo $_SERVER['SERVER_ADDR']; ?>"><?php echo $_SERVER['SERVER_ADDR']; ?></a>
+		<a class="brand mr-auto" href="http://<?php echo $_SERVER['SERVER_ADDR']; ?>"><?php echo $_SERVER['SERVER_ADDR']; ?></a>
 		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#options">Options</button>
 	</nav>
 
@@ -83,7 +73,8 @@ include 'localhost-list/cms_array.php';
 
 										foreach ($cms_array as $key => $val){
 											if (file_exists($folder . $val['file_path'])){
-												$CMS = $key;
+												$CMS = $val['class'];
+												array_push($CMS_of_all, $CMS);
 												break;
 											} else {
 												$CMS = none;
@@ -120,12 +111,14 @@ include 'localhost-list/cms_array.php';
 							<div class="input-group sort-group">
 								<div class="form-control">
 
-									<?php foreach ($cms_array as $key => $val) : ?>
+									<?php $existing_CMS_array = array_unique($CMS_of_all); ?>
+
+									<?php foreach ($existing_CMS_array as $val) : ?>
 										<div class="sort-by">
-											<label for="<?php echo $key; ?>">
-												<?php echo $val['name']; ?>
+											<label for="<?php echo $val; ?>">
+												<?php echo $val; ?>
 											</label>
-											<input type="checkbox" name="checkbox" id="<?php echo $key; ?>" value="<?php echo $key; ?>">
+											<input type="checkbox" name="checkbox" id="<?php echo $val; ?>" value="<?php echo $val; ?>">
 										</div>
 									<?php endforeach; ?>
 
@@ -205,25 +198,28 @@ include 'localhost-list/cms_array.php';
 							<tr>
 								<th scope="row"><?php echo $index; ?></th>
 								<td><?php echo $val['name']; ?></td>
-								<td><?php echo $key; ?></td>
+								<td><?php echo $val['class']; ?></td>
 								<td><?php echo $val['file_path']; ?></td>
 							</tr>
 							<?php $index++ ?>
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-					<p>
-						<button id="addNewCMS" type="button" class="btn btn-primary">
-							Add New <span class="badge badge-light">+</span>
-						</button>
-					</p>
+					<div class="row mb-5">
+						<div class="col">
+							<div id="addNewCMS">+</div>
+						</div>
+					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					<a id="save" href="#">
 						<button type="button" class="btn btn-primary">Save CMSs</button>
 					</a>
 				</div>
-				<div class="modal-footer d-flex">
-					<a href="#">How does this work?</a>
+				<div class="modal-footer">
+					<div class="row">
+						<p class="col-12"><a class="pull-right" href="#" data-toggle="collapse" data-target="#howDoesThisWork" aria-expanded="false" aria-controls="howDoesThisWork">How does this work?</a></p>
+						<p id="howDoesThisWork" class="collapse col-12 border-top py-3">Save the file generated when you click Save CMSs, and if it's not named "cms_array.json" name it that. Then, place it in the root of the folder "localhost-list," and your CMS list will be updated!</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -234,66 +230,6 @@ include 'localhost-list/cms_array.php';
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-	<script>
-		var options = {
-		valueNames: [ 'name', 'modified' ]
-		};
-
-		var hackerList = new List('localhost-list', options);
-	</script>
-	<script>
-		var lgi = $('.list-group-item');
-		$(".sort-by input:checkbox").on('change', function() {
-			if ($(".sort-by input:checkbox:checked").length){
-				lgi.hide();
-			} else {
-				lgi.show();
-			}
-			$(".sort-by input:checkbox:checked").each(function() {
-				$("." + $(this).val()).parents(lgi).show();
-			});
-		});
-	</script>
-	<script>
-		function makeNewInputRow(){
-			var previousRowNumber = $('table#table_add_cms tbody tr').length + 1;
-			$('table#table_add_cms tbody').append('<tr><th scope="row">' + previousRowNumber + '</th><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>');
-		}
-		function convertInputs(){
-			$('table#table_add_cms tbody tr td input').each(function(){
-				val = $(this).val();
-				$(this).parent().html(val);
-			});
-		}
-		$("#addNewCMS").click(function(){
-			if( ! $('table#table_add_cms tbody tr td input').length ){
-				makeNewInputRow();
-			} else {
-				// INCOMPLETE
-				convertInputs();
-				makeNewInputRow();
-			}
-		});
-	</script>
-	<script type="text/javascript">
-		$('#save').click(function(){
-			convertInputs();
-			var rows = [];
-			$('table#table_add_cms tbody tr').each(function(i, n){
-				var $row = $(n);
-				rows.push({
-					name: $row.find('td:eq(0)').text(),
-					class: $row.find('td:eq(1)').text(),
-					file_path: $row.find('td:eq(2)').text(),
-				});
-			});
-
-			var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rows));
-			var dlAnchorElem = document.getElementById('save');
-			dlAnchorElem.setAttribute("href", dataStr);
-			dlAnchorElem.setAttribute("download", "cms_array.json");
-			dlAnchorElem.click();
-		});
-	</script>
+	<script src="localhost-list/app.js"></script>
 </body>
 </html>

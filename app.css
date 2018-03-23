@@ -166,6 +166,40 @@ table tr td input {
 	width: 100%;
 }
 
+#addNewCMS {
+	background: #007bff;
+	border-radius: 50%;
+	color: white;
+	cursor: pointer;
+	line-height: 2em;
+	position: absolute;
+	right: 2em;
+	height: 2em;
+	width: 2em;
+}
+#addNewCMS:hover,
+#addNewCMS:focus {
+	background: #0069d9;
+}
+
+.removeRow {
+	background-color: red;
+	border-radius: 50%;
+	color: white;
+	cursor: pointer;
+	display: none;
+	line-height: 1em;
+	margin-top: .5em;
+	position: absolute;
+	right: 0.5em;
+	height: 1em;
+	width: 1em;
+}
+table tr:hover .removeRow {
+	display: block;
+}
+
+/*GENERAL STYLES*/
 .jumbotron {
 	background: #fff;
 	border: 1px solid rgba(0,0,0,.125);
