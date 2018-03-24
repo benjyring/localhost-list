@@ -181,8 +181,7 @@ $CMS_of_all = [];
 					</button>
 				</div>
 				<div class="modal-body text-center">
-					<!-- <p>Enter additional CMSs by including a filepath to search for, relative to the root of each.</p> -->
-					<p>This functionality doesn't function yet, but you can see what I'm planning to add. Follow progress at <a href="https://www.github.com/benjyring/localhost-list">localhost-list</a>!</p>
+					<p>This functionality exists in a limited working state, but you can test it to see what I'm planning to add. Follow progress at <a href="https://www.github.com/benjyring/localhost-list">localhost-list</a>!</p>
 					<table id="table_add_cms" class="table table-bordered table-hover">
 						<thead>
 							<tr>
