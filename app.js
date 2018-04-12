@@ -1,9 +1,9 @@
 // LIST JS OPTIONS
 var options = {
-valueNames: [ 'name', 'modified' ]
+	valueNames: [ 'name', 'modified' ]
 };
 
-var hackerList = new List('localhost-list', options);
+var localhostList = new List('localhost-list', options);
 
 // SORT BY CMS
 var lgi = $('.list-group-item');
@@ -18,51 +18,58 @@ $(".sort-by input:checkbox").on('change', function() {
 	});
 });
 
-// ADD NEW CMSs
-var $tr = $('table#table_add_cms tbody tr');
+// MODIFY CMSs
+var tr = 'table#table_add_cms tbody tr';
 
-function makeNewInputRow(){
-	var previousRowNumber = $tr.length + 1;
-	$('table#table_add_cms tbody').append('<tr><th scope="row">' + previousRowNumber + '</th><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>');
-}
-function convertInputs(){
-	$tr.find('td input').each(function(){
-		val = $(this).val();
-		$(this).parent().html(val);
+function reNumberRows(){
+	$(tr).each(function(i){
+		$(this).find('th').text(i+1);
 	});
 }
-$("#addNewCMS").click(function(){
-	if( $tr.find('td input').length ){
-		convertInputs();
+function convertInputs(){
+	if ($(tr).find('td input').length){
+		$(tr).find('td input').each(function(){
+			val = $(this).val();
+			$(this).parent().html(val);
+		});
 	}
-	makeNewInputRow();
+}
+
+// ADD CMSs
+$("#addNewCMS").click(function(){
+	convertInputs();
+	$('table#table_add_cms tbody').append('<tr><th scope="row"></th><td><input type="text" /></td><td><input type="text" /></td><td><input type="text" /></td></tr>');
+	reNumberRows();
 });
 
 // REMOVE CMSs
-$('#table_add_cms tbody tr').each(function(){
-	$(this).append('<div class="removeRow">-</div>');
-});
-$('.removeRow').click(function(){
-	console.log('Attempting to remove');
+$('tbody tr th').click(function(){
+	convertInputs();
 	$(this).parent().remove();
+	reNumberRows();
 });
 
 // GENERATE NEW CMS_ARRAY.JSON
-$('#save').click(function(){
+$('#save').click(function(e){
+	e.preventDefault();
 	convertInputs();
-	var rows = [];
-	$tr.each(function(i, n){
-		var $row = $(n);
-		rows.push({
-			class: $row.find('td:eq(1)').text(),
-			name: $row.find('td:eq(0)').text(),
-			file_path: $row.find('td:eq(2)').text(),
-		});
+
+	var classValues = [],
+	nameValues = [],
+	filePathValues = [];
+
+	$(tr).each(function(){
+		$this = $(this);
+		// Convert table rows into inputs, cells into values/classes/data-attributes
+		classValues.push($this.find('td:eq(1)').text());
+		nameValues.push($this.find('td:eq(0)').text());
+		filePathValues.push($this.find('td:eq(2)').text());
 	});
 
-	var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rows));
-	var dlAnchorElem = document.getElementById('save');
-	dlAnchorElem.setAttribute("href", dataStr);
-	dlAnchorElem.setAttribute("download", "cms_array.json");
+	$('#save-cms-form').prepend(
+		'<input type="hidden" name="class_values" value="' + classValues + '" /><input type="hidden" name="name_values" value="' + nameValues + '" /><input type="hidden" name="file_path_values" value="' + filePathValues + '" />'
+	);
+
+	var dlAnchorElem = document.getElementById('save-cms-form-submit');
 	dlAnchorElem.click();
 });

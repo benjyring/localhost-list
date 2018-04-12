@@ -182,21 +182,23 @@ table tr td input {
 	background: #0069d9;
 }
 
-.removeRow {
+tbody tr:hover th {
+	cursor: pointer;
+	font-size: 0;
+}
+tbody tr th:before {
+	/*Row Remover*/
 	background-color: red;
 	border-radius: 50%;
+	content: "-";
 	color: white;
-	cursor: pointer;
 	display: none;
-	line-height: 1em;
-	margin-top: .5em;
-	position: absolute;
-	right: 0.5em;
-	height: 1em;
-	width: 1em;
+	line-height: 18px;
 }
-table tr:hover .removeRow {
+tbody tr:hover th:before {
+	/*Row Remover*/
 	display: block;
+	font-size: 20px;
 }
 
 /*GENERAL STYLES*/
@@ -246,7 +248,7 @@ form.donate-form,
 	display: inline-block;
 	color: #000 !important;
 	cursor: pointer;
-	background: #fdfdfd; 
+	background: #fdfdfd;
 	text-decoration: none !important;
 	font-size: 12px !important;
 	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
