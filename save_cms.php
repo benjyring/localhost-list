@@ -26,10 +26,10 @@ $content.=<<<EOT
 );
 EOT;
 
-$filename = "test.php";
+$filename = "cms_array.php";
 $cms_array = fopen($filename, "w") or die("Unable to open file!");
 
 fwrite($cms_array, $content);
 fclose($cms_array);
 
-header("Location: $filename");
+header("Location: /");

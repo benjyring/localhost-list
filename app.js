@@ -60,6 +60,10 @@ $('#save').click(function(e){
 
 	$(tr).each(function(){
 		$this = $(this);
+		// Remove tr with three empty inputs
+		$this.find('td').each(function(i, el){
+			if (el.empty){}
+		});
 		// Convert table rows into inputs, cells into values/classes/data-attributes
 		classValues.push($this.find('td:eq(1)').text());
 		nameValues.push($this.find('td:eq(0)').text());
