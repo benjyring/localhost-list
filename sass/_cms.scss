@@ -1,0 +1,89 @@
+/*CMS Indicator Icons*/
+.cms,
+.sort-by label {
+	color: $text-muted;
+	cursor: pointer;
+	font-size: .75em;
+	transition: color .1s ease;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+.cms {
+	&:before {
+		background-size: cover;
+		content: '';
+		display: inline-block;
+		margin: 0 ($grid-gutter-width / 2);
+		opacity: .9;
+		height: $grid-gutter-width;
+		width: $grid-gutter-width;
+		vertical-align: middle;
+		transition: opacity .1s ease;
+	}
+
+	&:after {
+		vertical-align: middle;
+	}
+
+	&.none:before {
+		background-image: url(img/none.png);
+	}
+	&.todaymade:before {
+		background-image: url(img/todaymade.png);
+	}
+	&.tao:before {
+		background-image: url(img/tao.png);
+	}
+	&.joomla:before {
+		background-image: url(img/joomla.png);
+	}
+	&.wp:before {
+		background-image: url(img/wp.png);
+	}
+	&.d7:before,
+	&.d8:before {
+		background-image: url(img/drupal.png);
+	}
+	&.magento:before {
+		background-image: url(img/magento.png);
+	}
+	&.prestashop:before {
+		background-image: url(img/prestashop.png);
+	}
+	&.typo3:before {
+		background-image: url(img/typo3.png);
+	}
+
+
+	&.none:after {
+		content: "No CMS detected";
+	}
+	&.todaymade:after {
+		content: "TodayMade";
+	}
+	&.tao:after {
+		content: "TaoCMS";
+	}
+	&.joomla:after {
+		content: "Joomla";
+	}
+	&.wp:after {
+		content: "Wordpress";
+	}
+	&.d7:after {
+		content: "Drupal 7";
+	}
+	&.d8:after {
+		content: "Drupal 8";
+	}
+	&.magento:after {
+		content: "Magento";
+	}
+	&.prestashop:after {
+		content: "PrestaShop";
+	}
+	&.typo3:after {
+		content: "Typo3";
+	}
+}

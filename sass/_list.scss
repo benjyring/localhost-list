@@ -1,0 +1,19 @@
+/* List UI */
+#localhost-list li:hover .cms:before {
+	opacity: 1;
+}
+#localhost-list li:hover .cms,
+#localhost-list li:hover .modified {
+	color: #ababab;
+}
+.sort-by {
+	clear: both;
+	display: block;
+	float: right;
+	padding: 0 8px;
+	text-align: right;
+	width: 100%;
+}
+.sort-group {
+	margin-bottom: ($grid-gutter-width / 2);
+}

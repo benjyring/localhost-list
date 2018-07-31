@@ -1,0 +1,26 @@
+/*Repo Indicator Icons*/
+.repo {
+	color: $text-muted;
+	cursor: pointer;
+	font-size: .75em;
+	transition: color .1s ease;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+
+	&:before {
+		background-size: cover;
+		content: '';
+		display: inline-block;
+		margin: 0 ($grid-gutter-width / 2);
+		opacity: .9;
+		height: $grid-gutter-width;
+		width: $grid-gutter-width;
+		vertical-align: middle;
+		transition: opacity .1s ease;
+	}
+
+	&.git:before {
+		background-image: url(img/github.png);
+	}
+}

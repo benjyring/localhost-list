@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+	<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 		<a class="brand mr-auto" href="http://<?php echo $_SERVER['SERVER_ADDR']; ?>"><?php echo $_SERVER['SERVER_ADDR']; ?></a>
 		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#options">Options</button>
 	</nav>
@@ -125,7 +125,7 @@
 		</div>
 	</div>
 
-	<footer class="footer fixed-bottom bg-dark">
+	<footer class="footer fixed-bottom">
 		<div class="container d-flex align-items-center">
 			<div class="misc">
 				<div class="misc-author">

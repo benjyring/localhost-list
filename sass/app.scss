@@ -1,0 +1,93 @@
+@import 'bootstrap';
+
+a {
+	text-decoration: none !important;
+	cursor: pointer;
+
+	h4 &,
+	nav &,
+	&:link.name,
+	&:visited.name {
+		background: none !important;
+		color: $link-color;
+
+		&:focus,
+		&:hover {
+			color: darken($link-color, 25%);
+		}
+	}
+}
+
+#accordion {
+	margin: $grid-gutter-width 0 ($grid-gutter-width * 2);
+}
+
+.btn.sort {
+	border: 1px solid $text-muted;
+
+	&:after {
+		display: inline-block;
+		margin-left: 1em;
+		position: relative;
+	}
+
+	&.asc:after {
+		content: "▼";
+	}
+	&.desc:after {
+		content: "▲";
+	}
+}
+
+@import 'list';
+
+@import 'cms';
+
+@import 'repo';
+
+@import 'options';
+
+/*GENERAL STYLES*/
+.jumbotron {
+	background: $white;
+	border: 1px solid rgba(0,0,0,.125);
+
+	h1 {
+		font-size: 2.5rem;
+	}
+}
+#accordion,
+.jumbotron,
+.input-group.mb-3,
+.list.list-group {
+	border-radius: .25rem !important;
+	box-shadow: 0 0 ($grid-gutter-width / 10) rgba(0, 0, 0, 0.1);
+}
+
+.modified {
+	color: $text-muted;
+	transition: color .1s ease;
+}
+
+.navbar {
+	background-color: $bg-dark;
+}
+
+.wrapper {
+	background-color: $bg-light;
+	margin-bottom: 100vh;
+	padding-bottom: $grid-gutter-width;
+	padding-top: ($grid-gutter-width * 2);
+	z-index: 1031;
+}
+footer {
+	background: $bg-dark;
+	z-index: 1019 !important;
+
+	.container {
+		color: $white;
+		height: 100vh;
+	}
+}
+
+@import 'follow';

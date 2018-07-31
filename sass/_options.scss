@@ -1,0 +1,55 @@
+/*CMS OPTIONS STYLES*/
+table {
+	tr {
+		td {
+			input {
+				width: 100%;
+			}
+		}
+
+		tbody & {
+			th[scope="row"] {
+				height: 44px;
+				width: 44px;
+
+				&:before {
+					/*Row Remover*/
+					background-color: $danger;
+					border-radius: 50%;
+					content: "-";
+					color: $white;
+					display: none;
+					line-height: 19px;
+				}
+			}
+
+			&:hover th[scope="row"] {
+				cursor: pointer;
+				font-size: 0;
+
+				&:before {
+					/*Row Remover*/
+					display: block;
+					font-size: 20px;
+				}
+			}
+		}
+	}
+}
+
+#addNewCMS {
+	background: $primary;
+	border-radius: 50%;
+	color: $white;
+	cursor: pointer;
+	line-height: 2em;
+	position: absolute;
+	right: 2em;
+	height: 2em;
+	width: 2em;
+
+	&:hover,
+	&:focus {
+		background: darken($primary, 20%);
+	}
+}

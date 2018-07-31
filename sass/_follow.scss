@@ -1,0 +1,44 @@
+/* Follow me section */
+form.donate-form,
+.follow-button {
+	display: inline-block;
+}
+
+.donate-form button,
+.follow-button a {
+	display: inline-block;
+	color: $black !important;
+	cursor: pointer;
+	background: $gray-200;
+	text-decoration: none !important;
+	font-size: 12px !important;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	line-height: inherit;
+	font-weight: bold;
+	border-radius: ($grid-gutter-width / 10);
+}
+
+.follow-button.github #icon-bg {
+	background: linear-gradient(#7b7b7b, #000);
+}
+.follow-button.linkedin #icon-bg {
+	background: linear-gradient(#81bedb, #007bb6);
+}
+.follow-button.donate #icon-bg {
+	background: linear-gradient(#7dcb6a, #0a5a24);
+}
+
+#icon-bg {
+	display: inline-block;
+	background: #666;
+	border-top-left-radius: ($grid-gutter-width / 10);
+	border-bottom-left-radius: ($grid-gutter-width / 10);
+	color: $white;
+	padding: 0 ($grid-gutter-width / 6) ($grid-gutter-width / 10);
+	font-size: 16px;
+}
+
+#icon-label-bg {
+	display: inline-block;
+	padding: ($grid-gutter-width / 10) ($grid-gutter-width / 6) ($grid-gutter-width / 10) ($grid-gutter-width / 6);
+}

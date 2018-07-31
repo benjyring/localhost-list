@@ -20,10 +20,6 @@ $cms_array = array(
 		'name' => 'Magento',
 		'file_path' => '/app/i18n/Magento',
 	),
-	'prestashop' => array(
-		'name' => 'PrestaShop',
-		'file_path' => '/src/PrestaShopBundle',
-	),
 	'typo3' => array(
 		'name' => 'Typo3',
 		'file_path' => '/typo3',
