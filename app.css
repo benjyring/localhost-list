@@ -7161,4 +7161,130 @@ form.donate-form,
   padding: 3px 5px 3px 5px;
 }
 
+.cms,
+.sort-by label,
+.modified,
+.repo {
+  color: #6c757d;
+}
+.dark-grey-theme .cms,
+.dark-grey-theme .sort-by label,
+.dark-grey-theme .modified,
+.dark-grey-theme .repo {
+  color: #000;
+}
+
+.dark-grey-theme .text-color {
+  color: #e6e6e6;
+}
+
+h4 a,
+nav a,
+a:link.name,
+a:visited.name {
+  background: none !important;
+  color: #007bff;
+}
+.dark-grey-theme h4 a,
+.dark-grey-theme nav a,
+.dark-grey-theme a:link.name,
+.dark-grey-theme a:visited.name {
+  color: #e6e6e6;
+}
+h4 a:active, h4 a:focus, h4 a:hover,
+nav a:active,
+nav a:focus,
+nav a:hover,
+a:link.name:active,
+a:link.name:focus,
+a:link.name:hover,
+a:visited.name:active,
+a:visited.name:focus,
+a:visited.name:hover {
+  color: #003e80;
+}
+.dark-grey-theme h4 a:active, .dark-grey-theme h4 a:focus, .dark-grey-theme h4 a:hover,
+.dark-grey-theme nav a:active,
+.dark-grey-theme nav a:focus,
+.dark-grey-theme nav a:hover,
+.dark-grey-theme a:link.name:active,
+.dark-grey-theme a:link.name:focus,
+.dark-grey-theme a:link.name:hover,
+.dark-grey-theme a:visited.name:active,
+.dark-grey-theme a:visited.name:focus,
+.dark-grey-theme a:visited.name:hover {
+  color: #fff;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+.dark-grey-theme .navbar {
+  background-color: #000;
+}
+
+.wrapper {
+  background-color: #e9ecef;
+  border-color: #cbd3da !important;
+}
+.dark-grey-theme .wrapper {
+  background-color: #343a40;
+  border-color: #4b545c !important;
+}
+
+footer {
+  background: #343a40;
+}
+.dark-grey-theme footer {
+  background-color: #000;
+}
+footer .container {
+  color: #fff;
+}
+.dark-grey-theme footer .container {
+  color: #e9ecef;
+}
+
+.form-control,
+.list-group-item,
+.jumbotron,
+.sort {
+  background-color: #fff;
+  border-color: #e9ecef;
+}
+.dark-grey-theme .form-control,
+.dark-grey-theme .list-group-item,
+.dark-grey-theme .jumbotron,
+.dark-grey-theme .sort {
+  background-color: #4b545c;
+  border-color: #343a40;
+  color: #000;
+}
+
+#addNewCMS,
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+.dark-grey-theme #addNewCMS,
+.dark-grey-theme .btn-primary {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+#addNewCMS:active, #addNewCMS:focus, #addNewCMS:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #004a99;
+  border-color: #004a99;
+}
+.dark-grey-theme #addNewCMS:active, .dark-grey-theme #addNewCMS:focus, .dark-grey-theme #addNewCMS:hover,
+.dark-grey-theme .btn-primary:active,
+.dark-grey-theme .btn-primary:focus,
+.dark-grey-theme .btn-primary:hover {
+  background-color: #3f474e;
+  border-color: #3f474e;
+}
+
 /*# sourceMappingURL=app.css.map */

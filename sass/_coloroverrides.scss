@@ -1,0 +1,125 @@
+//
+// Overrides
+//
+
+.cms,
+.sort-by label,
+.modified,
+.repo {
+	color: $text-muted;
+
+	.dark-grey-theme & {
+		color: $black;
+	}
+}
+
+.text-color {
+	.dark-grey-theme & {
+		color: darken($white, 10%);
+	}
+}
+
+h4 a,
+nav a,
+a:link.name,
+a:visited.name {
+	background: none !important;
+	color: $link-color;
+
+	.dark-grey-theme & {
+		color: darken($white, 10%);
+	}
+
+	&:active,
+	&:focus,
+	&:hover {
+		color: darken($link-color, 25%);
+
+		.dark-grey-theme & {
+			color: $white;
+		}
+	}
+}
+
+.navbar {
+	background-color: $bg-dark;
+
+	.dark-grey-theme & {
+		background-color: $black;
+	}
+}
+
+.wrapper {
+	background-color: $bg-light;
+	border-color: darken($bg-light, 10%) !important;
+
+	.dark-grey-theme & {
+		background-color: $bg-dark;
+		border-color: lighten($bg-dark, 10%) !important;
+	}
+}
+
+footer {
+	background: $bg-dark;
+
+	.dark-grey-theme & {
+		background-color: $black;
+	}
+
+	.container {
+		color: $white;
+
+		.dark-grey-theme & {
+			color: $bg-light;
+		}
+	}
+}
+
+.form-control,
+.list-group-item,
+.jumbotron,
+.sort {
+	background-color: $white;
+	border-color: $bg-light;
+
+	.dark-grey-theme & {
+		background-color: lighten($bg-dark, 10%);
+		border-color: $bg-dark;
+		color: $black;
+	}
+}
+
+#addNewCMS,
+.btn-primary {
+	background-color: $primary;
+	border-color: $primary;
+	color: $white;
+
+	.dark-grey-theme & {
+		background-color: $bg-dark;
+		border-color: $bg-dark;
+	}
+
+	&:active,
+	&:focus,
+	&:hover {
+		background-color: darken($primary, 20%);
+		border-color: darken($primary, 20%);
+
+		.dark-grey-theme & {
+			background-color: lighten($bg-dark, 5%);
+			border-color: lighten($bg-dark, 5%);
+		}
+	}
+}
+
+// .donate-form button,
+// .follow-button a {
+// 	background: $gray-200;
+// 	color: $black !important;
+// }
+
+// #icon-label-bg {
+// 	background-color: eh;
+// 	color: eh;
+// }

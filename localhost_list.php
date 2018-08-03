@@ -20,7 +20,7 @@
 			<main role="main">
 				<div class="jumbotron">
 					<div class="col-sm-10 mx-auto">
-						<h1 class="display-1">Localhost</h1>
+						<h1 class="display-1 text-color">Localhost</h1>
 							<hr class="my-4">
 							<p class="lead">
 								<a href="/phpmyadmin"><button class="btn btn-primary btn-lg">phpMyAdmin</button></a>
@@ -33,7 +33,7 @@
 				</div>
 
 				<!-- Lists all projects in www directory -->
-				<h2>Projects</h2>
+				<h2 class="text-color">Projects</h2>
 				<div id="localhost-list">
 					<div class="row">
 						<div class="col-sm-10">
