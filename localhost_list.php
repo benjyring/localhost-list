@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="<?php echo $color_theme; ?>" data-color="<?php echo $color_theme; ?>">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -197,6 +197,14 @@
 					<div class="row mb-5">
 						<div class="col">
 							<div id="addNewCMS">+</div>
+						</div>
+					</div>
+					<div class="row my-3">
+						<div class="col-12">
+							<button id="light-theme" class="btn color-scheme"></button>
+							<button id="dark-grey-theme" class="btn color-scheme"></button>
+							<!-- <button id="dark-theme" class="btn"></button> -->
+							<!-- <button id="dark-theme" class="btn"></button> -->
 						</div>
 					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

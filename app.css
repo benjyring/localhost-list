@@ -7071,6 +7071,27 @@ tbody table tr:hover th[scope=row]:before {
   background: #004a99;
 }
 
+.color-scheme {
+  border: 1px solid;
+  border-radius: 7.5px;
+  height: 15px;
+  width: 15px;
+  margin-right: 7.5px;
+  opacity: 0.8;
+  padding: 0;
+}
+.color-scheme:hover {
+  opacity: 1;
+}
+.color-scheme#dark-grey-theme {
+  background-color: #000;
+  border-color: #000;
+}
+.color-scheme#light-theme {
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+}
+
 /*GENERAL STYLES*/
 .jumbotron {
   background: #fff;

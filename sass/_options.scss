@@ -53,3 +53,26 @@ table {
 		background: darken($primary, 20%);
 	}
 }
+
+.color-scheme {
+	border: 1px solid;
+	border-radius: $grid-gutter-width/4;
+	height: $grid-gutter-width/2;
+	width: $grid-gutter-width/2;
+	margin-right: $grid-gutter-width/4;
+	opacity: .8;
+	padding: 0;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&#dark-grey-theme {
+		background-color: $black;
+		border-color: $black;
+	}
+	&#light-theme {
+		background-color: darken($white, 10%);
+		border-color: darken($white, 10%);
+	}
+}
