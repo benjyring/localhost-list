@@ -9,7 +9,7 @@
 	color: $text-muted;
 
 	.dark-grey-theme & {
-		color: $black;
+		color: darken($white, 20%);
 	}
 }
 
@@ -85,7 +85,7 @@ footer {
 	.dark-grey-theme & {
 		background-color: lighten($bg-dark, 10%);
 		border-color: $bg-dark;
-		color: $black;
+		color: darken($white, 20%);
 	}
 }
 
@@ -112,14 +112,3 @@ footer {
 		}
 	}
 }
-
-// .donate-form button,
-// .follow-button a {
-// 	background: $gray-200;
-// 	color: $black !important;
-// }
-
-// #icon-label-bg {
-// 	background-color: eh;
-// 	color: eh;
-// }

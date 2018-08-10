@@ -7192,7 +7192,7 @@ form.donate-form,
 .dark-grey-theme .sort-by label,
 .dark-grey-theme .modified,
 .dark-grey-theme .repo {
-  color: #000;
+  color: #cccccc;
 }
 
 .dark-grey-theme .text-color {
@@ -7279,7 +7279,7 @@ footer .container {
 .dark-grey-theme .sort {
   background-color: #4b545c;
   border-color: #343a40;
-  color: #000;
+  color: #cccccc;
 }
 
 #addNewCMS,
