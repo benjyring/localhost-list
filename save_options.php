@@ -7,6 +7,7 @@ $file_paths = $_POST["file_path_values"];
 $class_array = explode(",", $classes);
 $name_array = explode(",", $names);
 $file_path_array = explode(",", $file_paths);
+$theme = $_POST["color"];
 
 $content = <<<EOT
 <?php
@@ -24,9 +25,10 @@ endforeach;
 $content.=<<<EOT
 
 );
+\$color_theme = $theme;
 EOT;
 
-$filename = "cms_array.php";
+$filename = "options.php";
 $cms_array = fopen($filename, "w") or die("Unable to open file!");
 
 fwrite($cms_array, $content);

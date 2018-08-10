@@ -201,14 +201,14 @@
 					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					<button id="save" type="button" class="btn btn-primary">Save CMSs</button>
-					<form class="d-none" id="save-cms-form" method="post" action="/localhost-list/save_cms.php">
+					<form class="d-none" id="save-cms-form" method="post" action="/localhost-list/save_options.php">
 							<input id="save-cms-form-submit" type="submit" class="btn btn-primary" value="Save CMSs"/>
 					</form>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
 						<p class="col-12"><a class="pull-right" href="#" data-toggle="collapse" data-target="#howDoesThisWork" aria-expanded="false" aria-controls="howDoesThisWork">How does this work?</a></p>
-						<p id="howDoesThisWork" class="collapse col-12 border-top py-3">Add or delete CMSs as needed, and when finished, click <strong>Save CMSs.</strong> The file <code>cms_array.php</code> will be updated in <strong>/localhost-list,</strong> and your CMS list will be updated!</p>
+						<p id="howDoesThisWork" class="collapse col-12 border-top py-3">Add or delete CMSs as needed, and when finished, click <strong>Save CMSs.</strong> The file <code>options.php</code> will be updated in <strong>/localhost-list,</strong> and your CMS list will be updated!</p>
 					</div>
 				</div>
 			</div>
