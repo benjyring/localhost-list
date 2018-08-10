@@ -33,3 +33,4 @@ $cms_array = array(
 		'file_path' => '/connector.php',
 	),
 );
+$color_theme = 'dark-grey-theme';

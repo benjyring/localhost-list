@@ -7,7 +7,7 @@ $file_paths = $_POST["file_path_values"];
 $class_array = explode(",", $classes);
 $name_array = explode(",", $names);
 $file_path_array = explode(",", $file_paths);
-$theme = $_POST["color"];
+$theme = $_POST["color_scheme"];
 
 $content = <<<EOT
 <?php
@@ -25,7 +25,7 @@ endforeach;
 $content.=<<<EOT
 
 );
-\$color_theme = $theme;
+\$color_theme = '$theme';
 EOT;
 
 $filename = "options.php";
