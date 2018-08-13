@@ -6,32 +6,32 @@ table {
 				width: 100%;
 			}
 		}
+	}
 
-		tbody & {
-			th[scope="row"] {
-				height: 44px;
-				width: 44px;
+	tbody tr {
+		th[scope="row"] {
+			height: 44px;
+			width: 44px;
 
-				&:before {
-					/*Row Remover*/
-					background-color: $danger;
-					border-radius: 50%;
-					content: "-";
-					color: $white;
-					display: none;
-					line-height: 19px;
-				}
+			&:before {
+				/*Row Remover*/
+				background-color: $danger;
+				border-radius: 50%;
+				content: "-";
+				color: $white;
+				display: none;
+				line-height: 19px;
 			}
+		}
 
-			&:hover th[scope="row"] {
-				cursor: pointer;
-				font-size: 0;
+		&:hover th[scope="row"] {
+			cursor: pointer;
+			font-size: 0;
 
-				&:before {
-					/*Row Remover*/
-					display: block;
-					font-size: 20px;
-				}
+			&:before {
+				/*Row Remover*/
+				display: block;
+				font-size: 20px;
 			}
 		}
 	}

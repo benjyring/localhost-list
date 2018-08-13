@@ -12,18 +12,6 @@ $cms_array = array(
 		'name' => 'Wordpress',
 		'file_path' => '/wp-config.php',
 	),
-	'joomla' => array(
-		'name' => 'Joomla',
-		'file_path' => '/robots.txt.dist',
-	),
-	'magento' => array(
-		'name' => 'Magento',
-		'file_path' => '/app/i18n/Magento',
-	),
-	'typo3' => array(
-		'name' => 'Typo3',
-		'file_path' => '/typo3',
-	),
 	'tao' => array(
 		'name' => 'TaoCMS',
 		'file_path' => '/theme.json',

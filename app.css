@@ -7033,11 +7033,11 @@ h4 a:focus, h4 a:hover, nav a:focus, nav a:hover, a:link.name:focus, a:link.name
 table tr td input {
   width: 100%;
 }
-tbody table tr th[scope=row] {
+table tbody tr th[scope=row] {
   height: 44px;
   width: 44px;
 }
-tbody table tr th[scope=row]:before {
+table tbody tr th[scope=row]:before {
   /*Row Remover*/
   background-color: #dc3545;
   border-radius: 50%;
@@ -7046,11 +7046,11 @@ tbody table tr th[scope=row]:before {
   display: none;
   line-height: 19px;
 }
-tbody table tr:hover th[scope=row] {
+table tbody tr:hover th[scope=row] {
   cursor: pointer;
   font-size: 0;
 }
-tbody table tr:hover th[scope=row]:before {
+table tbody tr:hover th[scope=row]:before {
   /*Row Remover*/
   display: block;
   font-size: 20px;
