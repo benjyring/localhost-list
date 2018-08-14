@@ -52,10 +52,24 @@ $(document).ready(function(){
 	});
 
 	// Change color theme
-	$('.color-scheme').click(function(){
-		$('html').attr('data-color', $(this).attr('id'));
+	function changeTheme(color){
+		$('html').attr('data-color', color);
 		$('html').removeClass();
-		$('html').addClass($(this).attr('id'));
+		$('html').addClass(color);
+	}
+
+	$('.color-scheme').click(function(){
+		if ($(this).attr('id', 'color-selector')){
+			$('#color-selector-input').toggleClass('active');
+		} else {
+			changeTheme($(this).attr('id'));
+		}
+	});
+
+	$('#color-selector-input').keyup(function(){
+		if (this.value.match(/[^a-zA-Z0-9 ]/g)){
+			this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '');
+		}
 	});
 
 	// GENERATE NEW SAVE_OPTIONS.PHP
@@ -65,7 +79,12 @@ $(document).ready(function(){
 
 		var classValues = [],
 		nameValues = [],
-		filePathValues = [];
+		filePathValues = [],
+		highlight_color;
+
+		if (!$('#color-selector-input').val().empty){
+			highlight_color = $('#color-selector-input').val();
+		}
 
 		$(tr).each(function(){
 			$this = $(this);
@@ -80,7 +99,7 @@ $(document).ready(function(){
 		});
 
 		$('#save-cms-form').prepend(
-			'<input type="hidden" name="color_scheme" value="' + $('html').attr('data-color') + '" /><input type="hidden" name="class_values" value="' + classValues + '" /><input type="hidden" name="name_values" value="' + nameValues + '" /><input type="hidden" name="file_path_values" value="' + filePathValues + '" />'
+			'<input type="hidden" name="highlight_color" value="' + highlight_color + '" /><input type="hidden" name="color_scheme" value="' + $('html').attr('data-color') + '" /><input type="hidden" name="class_values" value="' + classValues + '" /><input type="hidden" name="name_values" value="' + nameValues + '" /><input type="hidden" name="file_path_values" value="' + filePathValues + '" />'
 		);
 
 		var dlAnchorElem = document.getElementById('save-cms-form-submit');

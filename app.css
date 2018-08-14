@@ -7083,13 +7083,30 @@ table tbody tr:hover th[scope=row]:before {
 .color-scheme:hover {
   opacity: 1;
 }
-.color-scheme#dark-grey-theme {
+.color-scheme#color-selector {
+  background: radial-gradient(blue, yellow, red);
+  border-color: red;
+}
+.color-scheme#dark-theme {
   background-color: #000;
   border-color: #000;
 }
 .color-scheme#light-theme {
   background-color: #e6e6e6;
   border-color: #e6e6e6;
+}
+
+#color-selector-input {
+  border-radius: 4px;
+  border-style: solid;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+  width: 0;
+}
+#color-selector-input.active {
+  opacity: 1;
+  width: 5em;
 }
 
 /*GENERAL STYLES*/
@@ -7188,14 +7205,14 @@ form.donate-form,
 .repo {
   color: #6c757d;
 }
-.dark-grey-theme .cms,
-.dark-grey-theme .sort-by label,
-.dark-grey-theme .modified,
-.dark-grey-theme .repo {
+.dark-theme .cms,
+.dark-theme .sort-by label,
+.dark-theme .modified,
+.dark-theme .repo {
   color: #cccccc;
 }
 
-.dark-grey-theme .text-color {
+.dark-theme .text-color {
   color: #e6e6e6;
 }
 
@@ -7206,10 +7223,10 @@ a:visited.name {
   background: none !important;
   color: #007bff;
 }
-.dark-grey-theme h4 a,
-.dark-grey-theme nav a,
-.dark-grey-theme a:link.name,
-.dark-grey-theme a:visited.name {
+.dark-theme h4 a,
+.dark-theme nav a,
+.dark-theme a:link.name,
+.dark-theme a:visited.name {
   color: #e6e6e6;
 }
 h4 a:active, h4 a:focus, h4 a:hover,
@@ -7224,23 +7241,23 @@ a:visited.name:focus,
 a:visited.name:hover {
   color: #003e80;
 }
-.dark-grey-theme h4 a:active, .dark-grey-theme h4 a:focus, .dark-grey-theme h4 a:hover,
-.dark-grey-theme nav a:active,
-.dark-grey-theme nav a:focus,
-.dark-grey-theme nav a:hover,
-.dark-grey-theme a:link.name:active,
-.dark-grey-theme a:link.name:focus,
-.dark-grey-theme a:link.name:hover,
-.dark-grey-theme a:visited.name:active,
-.dark-grey-theme a:visited.name:focus,
-.dark-grey-theme a:visited.name:hover {
+.dark-theme h4 a:active, .dark-theme h4 a:focus, .dark-theme h4 a:hover,
+.dark-theme nav a:active,
+.dark-theme nav a:focus,
+.dark-theme nav a:hover,
+.dark-theme a:link.name:active,
+.dark-theme a:link.name:focus,
+.dark-theme a:link.name:hover,
+.dark-theme a:visited.name:active,
+.dark-theme a:visited.name:focus,
+.dark-theme a:visited.name:hover {
   color: #fff;
 }
 
 .navbar {
   background-color: #343a40;
 }
-.dark-grey-theme .navbar {
+.dark-theme .navbar {
   background-color: #000;
 }
 
@@ -7248,7 +7265,7 @@ a:visited.name:hover {
   background-color: #e9ecef;
   border-color: #cbd3da !important;
 }
-.dark-grey-theme .wrapper {
+.dark-theme .wrapper {
   background-color: #343a40;
   border-color: #4b545c !important;
 }
@@ -7256,13 +7273,13 @@ a:visited.name:hover {
 footer {
   background: #343a40;
 }
-.dark-grey-theme footer {
+.dark-theme footer {
   background-color: #000;
 }
 footer .container {
   color: #fff;
 }
-.dark-grey-theme footer .container {
+.dark-theme footer .container {
   color: #e9ecef;
 }
 
@@ -7273,10 +7290,10 @@ footer .container {
   background-color: #fff;
   border-color: #e9ecef;
 }
-.dark-grey-theme .form-control,
-.dark-grey-theme .list-group-item,
-.dark-grey-theme .jumbotron,
-.dark-grey-theme .sort {
+.dark-theme .form-control,
+.dark-theme .list-group-item,
+.dark-theme .jumbotron,
+.dark-theme .sort {
   background-color: #4b545c;
   border-color: #343a40;
   color: #cccccc;
@@ -7288,8 +7305,8 @@ footer .container {
   border-color: #007bff;
   color: #fff;
 }
-.dark-grey-theme #addNewCMS,
-.dark-grey-theme .btn-primary {
+.dark-theme #addNewCMS,
+.dark-theme .btn-primary {
   background-color: #343a40;
   border-color: #343a40;
 }
@@ -7300,10 +7317,10 @@ footer .container {
   background-color: #004a99;
   border-color: #004a99;
 }
-.dark-grey-theme #addNewCMS:active, .dark-grey-theme #addNewCMS:focus, .dark-grey-theme #addNewCMS:hover,
-.dark-grey-theme .btn-primary:active,
-.dark-grey-theme .btn-primary:focus,
-.dark-grey-theme .btn-primary:hover {
+.dark-theme #addNewCMS:active, .dark-theme #addNewCMS:focus, .dark-theme #addNewCMS:hover,
+.dark-theme .btn-primary:active,
+.dark-theme .btn-primary:focus,
+.dark-theme .btn-primary:hover {
   background-color: #3f474e;
   border-color: #3f474e;
 }

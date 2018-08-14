@@ -6,10 +6,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="localhost-list/app.css" />
+	<link rel="stylesheet" href="localhost-list/usercolor.css" />
 	<title><?php echo $title; ?></title>
 </head>
 
-<body>
+<body class="<?php echo $highlight; ?>">
 	<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 		<a class="brand mr-auto" href="http://<?php echo $_SERVER['SERVER_ADDR']; ?>"><?php echo $_SERVER['SERVER_ADDR']; ?></a>
 		<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#options">Options</button>
@@ -202,13 +203,13 @@
 					<div class="row my-3">
 						<div class="col-12">
 							<button id="light-theme" class="btn color-scheme"></button>
-							<button id="dark-grey-theme" class="btn color-scheme"></button>
-							<!-- <button id="dark-theme" class="btn"></button> -->
-							<!-- <button id="dark-theme" class="btn"></button> -->
+							<button id="dark-theme" class="btn color-scheme"></button>
+							<button id="color-selector" class="btn color-scheme"></button>
+							<input id="color-selector-input" placeholder="#" maxlength="6" type="text">
 						</div>
 					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button id="save" type="button" class="btn btn-primary">Save CMSs</button>
+					<button id="save" type="button" class="btn btn-primary">Save Options</button>
 					<form class="d-none" id="save-cms-form" method="post" action="/localhost-list/save_options.php">
 							<input id="save-cms-form-submit" type="submit" class="btn btn-primary" value="Save CMSs"/>
 					</form>

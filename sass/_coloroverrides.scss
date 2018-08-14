@@ -8,13 +8,13 @@
 .repo {
 	color: $text-muted;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		color: darken($white, 20%);
 	}
 }
 
 .text-color {
-	.dark-grey-theme & {
+	.dark-theme & {
 		color: darken($white, 10%);
 	}
 }
@@ -26,7 +26,7 @@ a:visited.name {
 	background: none !important;
 	color: $link-color;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		color: darken($white, 10%);
 	}
 
@@ -35,7 +35,7 @@ a:visited.name {
 	&:hover {
 		color: darken($link-color, 25%);
 
-		.dark-grey-theme & {
+		.dark-theme & {
 			color: $white;
 		}
 	}
@@ -44,7 +44,7 @@ a:visited.name {
 .navbar {
 	background-color: $bg-dark;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		background-color: $black;
 	}
 }
@@ -53,7 +53,7 @@ a:visited.name {
 	background-color: $bg-light;
 	border-color: darken($bg-light, 10%) !important;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		background-color: $bg-dark;
 		border-color: lighten($bg-dark, 10%) !important;
 	}
@@ -62,14 +62,14 @@ a:visited.name {
 footer {
 	background: $bg-dark;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		background-color: $black;
 	}
 
 	.container {
 		color: $white;
 
-		.dark-grey-theme & {
+		.dark-theme & {
 			color: $bg-light;
 		}
 	}
@@ -82,7 +82,7 @@ footer {
 	background-color: $white;
 	border-color: $bg-light;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		background-color: lighten($bg-dark, 10%);
 		border-color: $bg-dark;
 		color: darken($white, 20%);
@@ -95,7 +95,7 @@ footer {
 	border-color: $primary;
 	color: $white;
 
-	.dark-grey-theme & {
+	.dark-theme & {
 		background-color: $bg-dark;
 		border-color: $bg-dark;
 	}
@@ -106,7 +106,7 @@ footer {
 		background-color: darken($primary, 20%);
 		border-color: darken($primary, 20%);
 
-		.dark-grey-theme & {
+		.dark-theme & {
 			background-color: lighten($bg-dark, 5%);
 			border-color: lighten($bg-dark, 5%);
 		}
