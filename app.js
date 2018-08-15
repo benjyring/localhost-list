@@ -59,7 +59,7 @@ $(document).ready(function(){
 	}
 
 	$('.color-scheme').click(function(){
-		if ($(this).attr('id', 'color-selector')){
+		if ($(this).attr('id') === 'color-selector'){
 			$('#color-selector-input').toggleClass('active');
 		} else {
 			changeTheme($(this).attr('id'));
