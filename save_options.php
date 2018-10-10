@@ -38,11 +38,11 @@ fclose($cms_array);
 
 $usercolor_css = <<<EOT
 .cms, .sort-by label, .modified, .repo, .jumbotron h1, h4 a, nav a, a:link.name, a:visited.name, h4 a:active, h4 a:focus, h4 a:hover, nav a:active, nav a:focus, nav a:hover, a:link.name:active, a:link.name:focus, a:link.name:hover, a:visited.name:active, a:visited.name:focus, a:visited.name:hover, footer .container {
-	color: #$highlight_color !important;
+	color: $highlight_color !important;
 }
 
 #addNewCMS, .btn-primary {
-	color: #$highlight_color !important;
+	color: $highlight_color !important;
 }
 EOT;
 

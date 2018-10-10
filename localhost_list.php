@@ -3,8 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="shortcut icon" href="/localhost-list/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/localhost-list/img/favicon/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="localhost-list/node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" />
 	<link rel="stylesheet" href="localhost-list/app.css" />
 	<link rel="stylesheet" href="localhost-list/usercolor.css" />
 	<title><?php echo $title; ?></title>
@@ -205,7 +208,7 @@
 							<button id="light-theme" class="btn color-scheme"></button>
 							<button id="dark-theme" class="btn color-scheme"></button>
 							<button id="color-selector" class="btn color-scheme"></button>
-							<input id="color-selector-input" placeholder="#" maxlength="6" type="text">
+							<div id="cp" data-color="<?php echo $highlight; ?>"></div>
 						</div>
 					</div>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -225,10 +228,49 @@
 	</div>
 
 	<!-- SCRIPTS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="/localhost-list/node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+	<script src="/localhost-list/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/localhost-list/node_modules/list.js/dist/list.min.js"></script>
+	<script src="/localhost-list/node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script>
+		$(function () {
+			$('#cp').colorpicker({
+				format: 'hex',
+				inline: true,
+				container: true,
+				template: '<div class="colorpicker">' +
+				'<div class="colorpicker-saturation"><i class="colorpicker-guide"></i></div>' +
+				'<div class="colorpicker-hue"><i class="colorpicker-guide"></i></div>' +
+				'<div class="colorpicker-bar">' +
+				'   <div class="input-group">' +
+				'       <input class="form-control input-block color-io" />' +
+				'   </div>' +
+				'</div>' +
+				'</div>'
+			})
+			.on('colorpickerCreate', function (e) {
+				// initialize the input on colorpicker creation
+				var io = e.colorpicker.element.find('.color-io');
+
+				io.val(e.color.string());
+
+				io.on('change keyup', function () {
+					e.colorpicker.setValue(io.val());
+				});
+			})
+			.on('colorpickerChange', function (e) {
+				var io = e.colorpicker.element.find('.color-io');
+
+				if (e.value === io.val() || !e.color || !e.color.isValid()) {
+					// do not replace the input value if the color is invalid or equals
+					return;
+				}
+
+				io.val(e.color.string());
+			});
+		});
+	</script>
 	<script src="localhost-list/app.js"></script>
 </body>
 </html>

@@ -60,13 +60,13 @@ $(document).ready(function(){
 
 	$('.color-scheme').click(function(){
 		if ($(this).attr('id') === 'color-selector'){
-			$('#color-selector-input').toggleClass('active');
+			$('#cp').toggleClass('active');
 		} else {
 			changeTheme($(this).attr('id'));
 		}
 	});
 
-	$('#color-selector-input').keyup(function(){
+	$('input.color-io').keyup(function(){
 		if (this.value.match(/[^a-zA-Z0-9 ]/g)){
 			this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '');
 		}

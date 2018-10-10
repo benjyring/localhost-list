@@ -1,0 +1,25 @@
+{
+  "name": "localhost-list",
+  "version": "1.0.0",
+  "description": "Style your localhost sites directory",
+  "main": "index.php",
+  "dependencies": {
+    "bootstrap-colorpicker": "^3.0.3",
+    "list.js": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benjyring/localhost-list.git"
+  },
+  "author": "Ben Jyring",
+  "license": "ISC",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/benjyring/localhost-list/issues"
+  },
+  "homepage": "https://github.com/benjyring/localhost-list#readme"
+}

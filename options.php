@@ -12,6 +12,10 @@ $cms_array = array(
 		'name' => 'Wordpress',
 		'file_path' => '/wp-config.php',
 	),
+	'angular' => array(
+		'name' => 'Angular',
+		'file_path' => '/angular.json',
+	),
 	'tao' => array(
 		'name' => 'TaoCMS',
 		'file_path' => '/theme.json',
