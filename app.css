@@ -6870,11 +6870,11 @@ a {
   text-decoration: none !important;
   cursor: pointer;
 }
-h4 a, nav a, a:link.name, a:visited.name {
+h4 a, nav a, a:link, a:visited, a:link.name, a:visited.name {
   background: none !important;
   color: #007bff;
 }
-h4 a:focus, h4 a:hover, nav a:focus, nav a:hover, a:link.name:focus, a:link.name:hover, a:visited.name:focus, a:visited.name:hover {
+h4 a:focus, h4 a:hover, nav a:focus, nav a:hover, a:link:focus, a:visited:focus, a:link:hover, a:visited:hover, a:link.name:focus, a:link.name:hover, a:visited.name:focus, a:visited.name:hover {
   color: #003e80;
 }
 
@@ -7096,17 +7096,18 @@ table tbody tr:hover th[scope=row]:before {
   border-color: #e6e6e6;
 }
 
-#color-selector-input {
-  border-radius: 4px;
-  border-style: solid;
+#cp {
+  height: 222px;
+  margin-top: -252px;
   opacity: 0;
-  text-align: center;
-  transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
-  width: 0;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
 }
-#color-selector-input.active {
+#cp.active {
   opacity: 1;
-  width: 5em;
+  z-index: 2;
 }
 
 /*GENERAL STYLES*/
@@ -7138,6 +7139,7 @@ table tbody tr:hover th[scope=row]:before {
 .wrapper {
   background-color: #e9ecef;
   margin-bottom: 100vh;
+  min-height: calc(100vh - 54px);
   padding-bottom: 30px;
   padding-top: 60px;
   z-index: 1031;
@@ -7261,13 +7263,17 @@ a:visited.name:hover {
   background-color: #000;
 }
 
+.colorpicker,
 .wrapper {
   background-color: #e9ecef;
   border-color: #cbd3da !important;
+  color: #000;
 }
+.dark-theme .colorpicker,
 .dark-theme .wrapper {
   background-color: #343a40;
   border-color: #4b545c !important;
+  color: #cccccc;
 }
 
 footer {
@@ -7286,17 +7292,32 @@ footer .container {
 .form-control,
 .list-group-item,
 .jumbotron,
-.sort {
+.modal-content,
+.modal-header,
+.modal-footer,
+.sort,
+#table_add_cms th,
+#table_add_cms td {
   background-color: #fff;
   border-color: #e9ecef;
 }
 .dark-theme .form-control,
 .dark-theme .list-group-item,
 .dark-theme .jumbotron,
-.dark-theme .sort {
+.dark-theme .modal-content,
+.dark-theme .modal-header,
+.dark-theme .modal-footer,
+.dark-theme .sort,
+.dark-theme #table_add_cms th,
+.dark-theme #table_add_cms td {
   background-color: #4b545c;
   border-color: #343a40;
   color: #cccccc;
+}
+
+.dark-theme .colorpicker,
+.dark-theme #table_add_cms {
+    box-shadow: 1px 2px 3px #000;
 }
 
 #addNewCMS,

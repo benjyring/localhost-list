@@ -81,16 +81,17 @@ table {
 	}
 }
 
-#color-selector-input {
-	border-radius: 4px;
-	border-style: solid;
+#cp {
+	height: 222px;
+	margin-top: -252px;
 	opacity: 0;
-	text-align: center;
-	transition: opacity .3s ease-in-out, width .3s ease-in-out;
-	width: 0;
+	overflow: hidden;
+	position: relative;
+	transition: opacity 0.3s ease-in-out;
+	z-index: -1;
 
 	&.active {
-		opacity: 1;
-		width: 5em;
+	  opacity: 1;
+	  z-index: 2;
 	}
 }

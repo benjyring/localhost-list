@@ -82,8 +82,8 @@ $(document).ready(function(){
 		filePathValues = [],
 		highlight_color;
 
-		if (!$('#color-selector-input').val().empty){
-			highlight_color = $('#color-selector-input').val();
+		if (!$('input.color-io').val().empty){
+			highlight_color = $('input.color-io').val();
 		}
 
 		$(tr).each(function(){

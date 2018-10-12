@@ -204,7 +204,7 @@
 						</div>
 					</div>
 					<div class="row my-3">
-						<div class="col-12">
+						<div class="col-12 mb-3">
 							<button id="light-theme" class="btn color-scheme"></button>
 							<button id="dark-theme" class="btn color-scheme"></button>
 							<button id="color-selector" class="btn color-scheme"></button>

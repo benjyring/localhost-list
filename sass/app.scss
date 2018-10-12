@@ -80,6 +80,7 @@ a {
 .wrapper {
 	background-color: $bg-light;
 	margin-bottom: 100vh;
+	min-height: calc(100vh - 54px);
 	padding-bottom: $grid-gutter-width;
 	padding-top: ($grid-gutter-width * 2);
 	z-index: 1031;

@@ -21,6 +21,8 @@
 
 h4 a,
 nav a,
+a:link,
+a:visited,
 a:link.name,
 a:visited.name {
 	background: none !important;
@@ -49,6 +51,7 @@ a:visited.name {
 	}
 }
 
+.colorpicker,
 .wrapper {
 	background-color: $bg-light;
 	border-color: darken($bg-light, 10%) !important;
@@ -56,6 +59,7 @@ a:visited.name {
 	.dark-theme & {
 		background-color: $bg-dark;
 		border-color: lighten($bg-dark, 10%) !important;
+		color: darken($white, 20%);
 	}
 }
 
@@ -78,7 +82,12 @@ footer {
 .form-control,
 .list-group-item,
 .jumbotron,
-.sort {
+.modal-content,
+.modal-header,
+.modal-footer,
+.sort,
+#table_add_cms th,
+#table_add_cms td {
 	background-color: $white;
 	border-color: $bg-light;
 
@@ -86,6 +95,13 @@ footer {
 		background-color: lighten($bg-dark, 10%);
 		border-color: $bg-dark;
 		color: darken($white, 20%);
+	}
+}
+
+.colorpicker,
+#table_add_cms {
+	.dark-theme & {
+		box-shadow: 1px 2px 3px $black;
 	}
 }
 
