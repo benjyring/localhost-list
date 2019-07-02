@@ -93,7 +93,7 @@
 												$CMS = $key;
 												break;
 											} else {
-												$CMS = none;
+												$CMS = "none";
 											}
 										}
 
